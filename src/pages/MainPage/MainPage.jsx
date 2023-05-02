@@ -1,11 +1,20 @@
-import styles from './MainPage.scss';
-import classNames from 'classnames/bind';
-const cx = classNames.bind(styles);
+import React from 'react';
+import './MainPage.scss';
 
+import VideoList from "./VideoList";
+import Header from "../../common/Header/Header"
+import AsideBar from "../../common/AssideBar/AsideBar"
 function MainPage(props) {
   return <div className="MainPage">
-    메인이에용
-  </div>
+    <Header />
+    <div className='content'>
+      <AsideBar />
+      <div className="videoListWrapper">
+        <VideoList />
+      </div>
+    </div>
+  </div>;
 }
+
 
 export default MainPage;

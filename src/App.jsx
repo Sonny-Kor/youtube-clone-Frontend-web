@@ -1,7 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import MainPage from './pages/MainPage/MainPage';
-import VideoViewPage from './pages/VideoViewPage/VideoViewPage';
+import Main from './pages/MainPage/MainPage';
 
 import './common/common.scss';
 
@@ -9,9 +8,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/watch" element={<VideoViewPage />}/>
-      <Route exact path="/" element={<MainPage />}/>
+      <Route exact path="/" element={<Main />}/>
     </Routes>
   );
 }
+
 export default App;
