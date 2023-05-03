@@ -9,7 +9,7 @@ const formatCountNumber = countNumber => {
   } else if (countNumber < 10000) {
     return parseInt(countNumber / 100) / 10 + ' 천';
   } else if (countNumber < 100000000) {
-    return parseInt(views / 1000) / 10 + ' 만';
+    return parseInt(countNumber / 1000) / 10 + ' 만';
   } else if (countNumber < 1000000000000) {
     return parseInt(countNumber / 10000) / 10 + ' 억';
   }
