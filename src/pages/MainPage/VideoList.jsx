@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import VideoItem from "./VideoItem";
-import * as api from "../../services/api";
+
+import * as api from '../../services/api';
+
+import VideoItem from './VideoItem';
 
 import './VideoList.scss';
 
@@ -18,20 +20,23 @@ function VideoList(props) {
   //   fetchVideoList();
   // }, []);
 
-
-  return (<ul className="VideoList">
-    {videoList.map((video,index)=>(
-      <VideoItem key={video.video_id}
-      title ={video.title} 
-      thumbnail={video.thumb_img}  
-      channelId={video.channelId}
-      channelTitle={video.channel_title} 
-      videoId={video.video_id}
-      profileImg={video.profile_img} 
-      viewCount = {video.view_count} 
-      createdTime = {video.created_time}/>
-    ))}
-  </ul>);
+  return (
+    <ul className="VideoList">
+      {videoList.map((video, index) => (
+        <VideoItem
+          key={video.video_id}
+          title={video.title}
+          thumbnail={video.thumb_img}
+          channelId={video.channelId}
+          channelTitle={video.channel_title}
+          videoId={video.video_id}
+          profileImg={video.profile_img}
+          viewCount={video.view_count}
+          createdTime={video.created_time}
+        />
+      ))}
+    </ul>
+  );
 }
 
 export default VideoList;

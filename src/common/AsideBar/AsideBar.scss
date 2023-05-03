@@ -1,103 +1,100 @@
-.AsideBar{
+.AsideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0px;
+  gap: 8px;
+  width: 288px;
+  left: 20px;
+  top: 108px;
+  position: fixed;
+  .asideGroup {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 24px 0px;
-    gap: 8px;
+    align-items: flex-start;
+    padding: 0px 16px;
     width: 288px;
-    left: 20px;
-    top: 108px;
-    position: fixed;
-    .asideGroup{
+    .loginAlert {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px 20px;
+      gap: 16px;
+
+      width: 256px;
+      height: 168px;
+      .loginButton {
+        box-sizing: border-box;
+        cursor: pointer;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0px 16px;
-        width: 288px;
-        .loginAlert{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 16px 20px;
-            gap: 16px;
-
-            width: 256px;
-            height: 168px;
-            .loginButton{
-                box-sizing: border-box;
-                cursor: pointer;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                padding: 12px 16px;
-                gap: 10px;
-                border: 1px solid #CCCCCC;
-                border-radius: 24px;
-                &:hover{
-                    background: #F0F0F0;
-                }
-                .accountCircle{
-                    width: 24px;
-                    height: 24px;
-                    color: #0088FF;
-                }
-                .login{
-                    width: max-content;
-                    font-family: 'Inter';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 16px;
-                    line-height: 19px;
-                    color: #0088FF;
-                }
-            }
-            .loginText{
-                width: 216px;
-                height: 72px;
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 24px;
-                color: #333333;
-            }
-            
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 24px;
+        &:hover {
+          background: #f0f0f0;
         }
-        .asideItem{
-            width: 256px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 12px 16px;
-            gap: 24px;
-            &:hover{
-                background: red;
-                background: rgba(0, 0, 0, 0.1);
-                border-radius: 16px;
-            }
-            .asideItemIcon{
-                width: 28px;
-                height: 28px;
-                background: #D9D9D9;
-            }
-            .asideText{
-                width: max-content;
-                font-family: 'Noto Sans';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 16px;
-                color: #333333;
-            }
+        .accountCircle {
+          width: 24px;
+          height: 24px;
+          color: #0088ff;
         }
-
+        .login {
+          width: max-content;
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          color: #0088ff;
+        }
+      }
+      .loginText {
+        width: 216px;
+        height: 72px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #333333;
+      }
     }
+    .asideItem {
+      width: 256px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 24px;
+      &:hover {
+        background: red;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+      }
+      .asideItemIcon {
+        width: 28px;
+        height: 28px;
+        background: #d9d9d9;
+      }
+      .asideText {
+        width: max-content;
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        color: #333333;
+      }
+    }
+  }
 }
-.underLine{
-    width: 288px;
-    height: 1px;
+.underLine {
+  width: 288px;
+  height: 1px;
 
-    background: #CCCCCC;
-
+  background: #cccccc;
 }

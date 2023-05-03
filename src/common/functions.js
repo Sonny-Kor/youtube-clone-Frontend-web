@@ -3,25 +3,25 @@
  * @param {number} countNumber
  * @returns {string}
  */
-const formatCountNumber = (countNumber) =>{
+const formatCountNumber = countNumber => {
   if (countNumber < 1000) {
     return countNumber;
-  } else if (countNumber < 10000){
+  } else if (countNumber < 10000) {
     return parseInt(countNumber / 100) / 10 + ' 천';
-  } else if (countNumber < 100000000){
+  } else if (countNumber < 100000000) {
     return parseInt(views / 1000) / 10 + ' 만';
-  } else if (countNumber < 1000000000000){
-    return parseInt (countNumber / 10000) / 10 + ' 억';
+  } else if (countNumber < 1000000000000) {
+    return parseInt(countNumber / 10000) / 10 + ' 억';
   }
   return countNumber;
-}
+};
 
 /**
  * @description timestamp가 현재 시각으로부터 얼마나 오래되었는지를 상대 시간 문자열로 변환합니다.
  * @param {number} timestamp
  * @return {string}
  */
-const formatTime = (timestamp) => {
+const formatTime = timestamp => {
   const now = new Date();
 
   const diff = now.getTime() - timestamp * 1000;
@@ -32,7 +32,7 @@ const formatTime = (timestamp) => {
   const year = 12 * month;
 
   if (diff < minute) {
-    return "방금 전";
+    return '방금 전';
   } else if (diff < hour) {
     const minutes = Math.floor(diff / minute);
     return `${minutes}분 전`;
@@ -49,6 +49,6 @@ const formatTime = (timestamp) => {
     const years = Math.floor(diff / year);
     return `${years}년 전`;
   }
-}
+};
 
 export { formatCountNumber, formatTime };
