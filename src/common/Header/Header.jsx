@@ -2,41 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import RecommendListItem from './RecommendListItem';
+import useInputs from '../../hooks/useInputs';
+
+import SearchBar from './SearchBar';
 
 import './Header.scss';
 
 function Header(props) {
-  const [isOpenedSearchBar, setOpenSearchBar] = useState(false);
-  const toggleSearchBar = e => {
-    setOpenSearchBar(isOpened => !isOpened);
-  };
-  const [searchKeyword, setSearchKeyword] = useState('');
-
-  const onChangeSearchInput = e => {
-    const val = e.target.value;
-    setSearchKeyword(val);
-  };
-  const onKeyDownSearchInput = e => {
-    if (e.key === 'Enter') {
-      onClickSearchButton();
-    }
-  };
+  const [form, onChange] = useInputs({
+    searchKeyword: ''
+  });
 
   const navigate = useNavigate();
 
-  const onClickSearchButton = e => {
-    navigate(`/search?keyword=${searchKeyword}`);
-    navigate({
-      pathname: '/search',
-      search: `keyword=${searchKeyword}`
-    });
-  };
+  useEffect(() => {
+    const { searchKeyword } = form;
 
-  useEffect(() => {}, [searchKeyword]);
+    if (searchKeyword != '') {
+      navigate({
+        pathname: '/search',
+        search: `keyword=${searchKeyword}`
+      });
+    }
+  }, [form]);
 
   return (
     <div className="Header">
@@ -49,27 +39,7 @@ function Header(props) {
         </Link>
       </div>
       <div className="centerSide">
-        <div className="searchBar">
-          <input
-            type="text"
-            className="inputArea"
-            onKeyDown={onKeyDownSearchInput}
-            value={searchKeyword}
-            onChange={onChangeSearchInput}
-            placeholder="검색"
-            onClick={toggleSearchBar}
-          ></input>
-          <div className="searchBarRecommendedList">
-            <RecommendListItem />
-          </div>
-          <button
-            type="submit"
-            className="submitButton"
-            onClick={onClickSearchButton}
-          >
-            <SearchIcon />
-          </button>
-        </div>
+        <SearchBar name="searchKeyword" onChange={onChange} />
       </div>
       <div className="rightSide">
         <div className="loginButton">
