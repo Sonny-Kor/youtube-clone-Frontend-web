@@ -1,17 +1,17 @@
 .VideoList {
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-    --row-count: 3;
-    --row-width: 440px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  --row-count: 3;
+  --row-width: 440px;
 
-    width: calc(var(--row-count) * var(--row-width));
-    @media (max-width: 1700px) and (min-width: 1301px) {
-        --row-count: 2;
-    }
-    @media (max-width: 1300px) {
-        --row-count: 1;
-    }
+  width: calc(var(--row-count) * var(--row-width));
+  @media (max-width: 1700px) and (min-width: 1301px) {
+    --row-count: 2;
+  }
+  @media (max-width: 1300px) {
+    --row-count: 1;
+  }
 }

@@ -1,75 +1,56 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Header.scss';
+
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import RecommendListItem from './RecommendListItem';
+
+import useInputs from '../../hooks/useInputs';
+
+import SearchBar from './SearchBar';
+
+import './Header.scss';
 
 function Header(props) {
-    const [isOpenedSearchBar, setOpenSearchBar] = useState(false);
-    const toggleSearchBar = e =>{
-        setOpenSearchBar(isOpened => !isOpened);
+  const [form, onChange] = useInputs({
+    searchKeyword: ''
+  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const { searchKeyword } = form;
+
+    if (searchKeyword != '') {
+      navigate({
+        pathname: '/search',
+        search: `keyword=${searchKeyword}`
+      });
     }
-    const [searchKeyword, setSearchKeyword] = useState('');
+  }, [form]);
 
-    const onChangeSearchInput = e => {
-        const val = e.target.value;
-        setSearchKeyword(val);
-    };
-    const onKeyDownSearchInput = e => {
-        if (e.key === 'Enter') {
-            onClickSearchButton();
-        }
-    }
-
-    const navigate = useNavigate();
-    
-    const onClickSearchButton = e => {
-        navigate(`/search?keyword=${searchKeyword}`);
-        navigate({
-            pathname: '/search',
-            search: `keyword=${searchKeyword}`,
-        });
-    }
-
-    useEffect(() => {
-
-    }, [searchKeyword])
-
-    return <div className="Header">
-        <div className='leftSide'>
-            <div className='frame1'>
-                <MenuIcon className='menu'/>
-            </div>
-            <Link className='youTube' to="/">
-                YOUTUBE
-            </Link>
+  return (
+    <div className="Header">
+      <div className="leftSide">
+        <div className="frame1">
+          <MenuIcon className="menu" />
         </div>
-        <div className='centerSide'>
-            <div className="searchBar">
-                <input type="text" className='inputArea' onKeyDown={onKeyDownSearchInput}
-                value={searchKeyword} onChange={onChangeSearchInput} placeholder='검색' onClick={toggleSearchBar}></input>
-                <div className='searchBarRecommendedList'>
-                    <RecommendListItem/>
-                </div>
-                <button type="submit" className='submitButton' onClick={onClickSearchButton}>
-                    <SearchIcon/>
-                </button>
-            </div>
+        <Link className="youTube" to="/">
+          YOUTUBE
+        </Link>
+      </div>
+      <div className="centerSide">
+        <SearchBar name="searchKeyword" onChange={onChange} />
+      </div>
+      <div className="rightSide">
+        <div className="loginButton">
+          <div className="accountCircle">
+            <AccountCircleIcon />
+          </div>
+          <div className="login">로그인</div>
         </div>
-        <div className='rightSide'>
-            <div className='loginButton'>
-                <div className='accountCircle'>
-                    <AccountCircleIcon/>
-                </div>
-                <div className='login'>
-                    로그인
-                </div>
-            </div>
-        </div>
-    </div>;
+      </div>
+    </div>
+  );
 }
-
 
 export default Header;

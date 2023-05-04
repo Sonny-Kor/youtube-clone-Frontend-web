@@ -5,10 +5,9 @@ import Main from './pages/MainPage/MainPage';
 import './common/common.scss';
 
 function App() {
-
   return (
     <Routes>
-      <Route exact path="/" element={<Main />}/>
+      <Route exact path="/" element={<Main />} />
     </Routes>
   );
 }
