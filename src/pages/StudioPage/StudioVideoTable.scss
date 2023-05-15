@@ -118,9 +118,11 @@
         &.copyright,
         &.date,
         &.view,
-        &.comment,
-        &.like {
+        &.comment{
           width: 96px;
+        }
+        &.like {
+          width: 150px;
         }
         .cellDate {
           display: flex;
