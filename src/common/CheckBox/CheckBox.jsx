@@ -1,6 +1,7 @@
 
 import cx from 'classnames';
 import { useState } from 'react';
+import './CheckBox.scss';
 
 function CheckBox({name, value = false, onChange}) {
 
@@ -14,8 +15,9 @@ function CheckBox({name, value = false, onChange}) {
   };
 
   return (
-    <div className="Checkbox">
-
+    <div className="CheckBox">
+      <input type='checkbox' />
     </div>
   )
 }
+export default CheckBox;

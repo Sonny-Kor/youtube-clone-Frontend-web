@@ -84,7 +84,7 @@
 
     .tableRow {
       &:hover {
-        background-color: #66666666;
+        background-color: #2222;
       }
       display: flex;
       border-bottom: 1px solid #ccc;
@@ -140,13 +140,15 @@
           gap: 16px;
           .cellvideoText {
             display: flex;
-
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
             padding: 0px 16px;
             gap: 12px;
             .cellvideoTitle {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: normal;
               font-family: 'Inter';
               font-style: normal;
               font-weight: 500;
@@ -154,6 +156,8 @@
               line-height: 14px;
             }
             .cellvideoDescribe {
+              overflow: hidden;
+              text-overflow: ellipsis;
               white-space: normal;
               font-family: 'Inter';
               font-style: normal;
@@ -179,14 +183,7 @@
           }
         }
 
-        .checkBox {
-          position: relative;
-          box-sizing: border-box;
-          width: 22px;
-          height: 22px;
-          border: 2px solid #777777;
-          border-radius: 2px;
-        }
+        
         .arrowIcon {
           vertical-align: middle;
           width: 22px;
