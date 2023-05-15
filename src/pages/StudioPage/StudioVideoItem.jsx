@@ -1,8 +1,14 @@
+import React, { useState } from 'react';
+import cx from 'classnames';
+
 import { formatCountNumber, formatTime, formatComma } from '../../common/functions';
 
-import CheckBox from '../../common/CheckBox/CheckBox';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
+import CheckBox from '../../common/CheckBox/CheckBox';
+import HoverItem from './HoverItem';
 import './StudioVideoItem.scss';
+
 function StudioVideoItem({
   video_title,
   thumb_img,
@@ -12,13 +18,27 @@ function StudioVideoItem({
   created_time,
   view_count,
   comment_count,
-  like_count
+  like_count,
+  currentCheck,
+  onChange
 }) {
+  const [isHoveredVideoItem,setHoveredVideoItem] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHoveredVideoItem(true);
+  }
+  const handleMouseLeave = () => {
+    setHoveredVideoItem(false);
+  }
+
+  const statusComponent = video_status ? <RemoveRedEyeIcon style={{color: 'green'}}/> : <RemoveRedEyeIcon style={{color: 'gray'}}/>
+
+
   return (
-    <div className='StudioVideoItem'>
+    <div className={'StudioVideoItem'} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="tableRow">
         <div className="cell checkbox">
-          <CheckBox />
+          <CheckBox name={video_title} onChange={onChange}/>
         </div>
         <div className="cell summary">
           <div className="cellVideo">
@@ -29,16 +49,15 @@ function StudioVideoItem({
                 alt="thumbnail"
               ></img>
             </div>
-
             <div className="cellvideoText">
               <div className="cellvideoTitle">{video_title}</div>
-              <div className="cellvideoDescribe">
-                {video_describe}
+              <div className={cx("cellvideoDescribe", {isHovered: isHoveredVideoItem})}>
+                {isHoveredVideoItem ?  <HoverItem/>: <span>{video_describe}</span>}
               </div>
             </div>
           </div>
         </div>
-        <div className="cell status">{video_status === true ? '공개' : '비공개'}</div>
+        <div className="cell status">{statusComponent}{video_status === true ?  '공개' :  '비공개'}</div>
         <div className="cell copyright">{video_copyright === true ? '저작권' : '없음'}</div>
         <div className="cell date">
           <div className="cellDate">

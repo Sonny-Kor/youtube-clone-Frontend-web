@@ -3,20 +3,21 @@ import cx from 'classnames';
 import { useState } from 'react';
 import './CheckBox.scss';
 
-function CheckBox({name, value = false, onChange}) {
+function CheckBox({ name, isChecked, onChange }) {
 
-  const onChangeHandler = () => {
-    onChange({
-      target:{
-        name: name,
-        value: value,
-      }
-    })
+  const handleChange = (event) => {
+    const checked = event.target.checked;
+    onChange(name, checked);
   };
 
   return (
     <div className="CheckBox">
-      <input type='checkbox' />
+       <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleChange}
+          name={name}
+        />
     </div>
   )
 }

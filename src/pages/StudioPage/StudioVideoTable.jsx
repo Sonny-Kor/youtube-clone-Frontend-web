@@ -27,7 +27,7 @@ function StudioVideoTable(props) {
         </div>
         <div className="videoTable">
           <div className="tableRow header">
-            <div className="cell checkbox"><CheckBox/></div>
+            <div className="cell checkbox"><CheckBox name='all'/></div>
             <div className="cell summary">동영상</div>
             <div className="cell status">공개 상태</div>
             <div className="cell copyright">제한사항</div>
