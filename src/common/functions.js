@@ -51,4 +51,13 @@ const formatTime = timestamp => {
   }
 };
 
-export { formatCountNumber, formatTime };
+/**
+ * @description 좋아요 수나 댓글 수등 천 단위 마다 콤마를 넣어 문자열로 변환합니다.
+ * @param {number} countNumber
+ * @return {string}
+ */
+const formatComma = countNumber => {
+  return countNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export { formatCountNumber, formatTime, formatComma };

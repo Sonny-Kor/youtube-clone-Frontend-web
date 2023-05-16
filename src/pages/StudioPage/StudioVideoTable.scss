@@ -1,0 +1,200 @@
+.StudioVideoTable {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 10px 10px;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .tableHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 10px 10px;
+    gap: 40px;
+
+    width: 100%;
+    height: 100%;
+    .tableTitle {
+      width: max-content;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+
+      color: #000000;
+    }
+    .tableTab {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 42px;
+
+      div {
+        width: max-content;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 14px;
+        cursor: pointer;
+        align-items: center;
+        color: #000000;
+      }
+    }
+  }
+  .tableFilter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    gap: 29px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .filterIcon {
+      width: 24px;
+      height: 24px;
+    }
+    .filterText {
+      width: max-content;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 14px;
+
+      color: #777777;
+    }
+  }
+  .videoTable {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    align-items: stretch;
+    transition: box-shadow ease 0.15s;
+    .tableRow {
+      &:hover {
+        background-color: #2221;
+      }
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      flex-direction: row;
+
+      &.header {
+        border-top: 1px solid #ccc;
+      }
+
+      .cell {
+        display: flex;
+        white-space: nowrap;
+        vertical-align: middle;
+        align-items: center;
+        padding: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+
+        &.checkbox {
+          align-self: flex-start;
+          height: 100%;
+        }
+
+        &.summary {
+          flex: 1;
+        }
+        &.status,
+        &.copyright,
+        &.date,
+        &.view,
+        &.comment {
+          width: 96px;
+        }
+        &.like {
+          width: 150px;
+        }
+        .cellDate {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .likeCell {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 10px;
+        }
+        .cellVideo {
+          height: 100px;
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+          .cellvideoText {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0px 16px;
+            gap: 12px;
+            .cellvideoTitle {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: normal;
+              font-family: 'Inter';
+              font-style: normal;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 14px;
+              cursor: pointer;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+            .cellvideoDescribe {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: normal;
+              font-family: 'Inter';
+              font-style: normal;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 14px;
+
+              color: #888888;
+            }
+          }
+          .thumbnailWrapper {
+            cursor: pointer;
+            box-sizing: border-box;
+            background-color: #d9d9d9;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            aspect-ratio: 16/ 9;
+            height: 100%;
+
+            .thumbnail {
+              object-fit: cover;
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .arrowIcon {
+          vertical-align: middle;
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+  }
+}
