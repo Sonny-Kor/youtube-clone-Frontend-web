@@ -8,14 +8,13 @@ import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 function HoverItem(props) {
-
   return (
-    <div className='HoverItem'>
-        <EditIcon className='editIcon'/>
-        <InsertChartIcon className='chartIcon'/>
-        <CommentIcon className='commentIcon'/>
-        <SmartDisplayIcon className='videoIcon'/>
-        <MoreVertIcon className='moreIcon'/>
+    <div className="HoverItem">
+      <EditIcon className="editIcon" />
+      <InsertChartIcon className="chartIcon" />
+      <CommentIcon className="commentIcon" />
+      <SmartDisplayIcon className="videoIcon" />
+      <MoreVertIcon className="moreIcon" />
     </div>
   );
 }

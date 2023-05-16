@@ -7,7 +7,7 @@ import './StudioPage.scss';
 function StudioPage(props) {
   return (
     <div className="StudioPage">
-        <StudioVideoTable/>
+      <StudioVideoTable />
     </div>
   );
 }

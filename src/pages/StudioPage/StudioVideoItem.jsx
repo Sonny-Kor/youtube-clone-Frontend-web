@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 
-import { formatCountNumber, formatTime, formatComma } from '../../common/functions';
+import {
+  formatCountNumber,
+  formatTime,
+  formatComma,
+} from '../../common/functions';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
@@ -10,6 +14,8 @@ import HoverItem from './HoverItem';
 import './StudioVideoItem.scss';
 
 function StudioVideoItem({
+  checked,
+  video_id,
   video_title,
   thumb_img,
   video_describe,
@@ -19,46 +25,61 @@ function StudioVideoItem({
   view_count,
   comment_count,
   like_count,
-  currentCheck,
-  onChange
+  onChange,
 }) {
-  const [isHoveredVideoItem,setHoveredVideoItem] = useState(false);
+  const [isHoveredVideoItem, setHoveredVideoItem] = useState(false);
 
   const handleMouseEnter = () => {
     setHoveredVideoItem(true);
-  }
+  };
   const handleMouseLeave = () => {
     setHoveredVideoItem(false);
-  }
+  };
 
-  const statusComponent = video_status ? <RemoveRedEyeIcon style={{color: 'green'}}/> : <RemoveRedEyeIcon style={{color: 'gray'}}/>
-
+  const statusComponent = video_status ? (
+    <RemoveRedEyeIcon style={{ color: 'green' }} />
+  ) : (
+    <RemoveRedEyeIcon style={{ color: 'gray' }} />
+  );
 
   return (
-    <div className={'StudioVideoItem'} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div
+      className={'StudioVideoItem'}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="tableRow">
         <div className="cell checkbox">
-          <CheckBox name={video_title} onChange={onChange}/>
+          <CheckBox name={video_id} onChange={onChange} isChecked={checked} />
         </div>
         <div className="cell summary">
           <div className="cellVideo">
             <div className="thumbnailWrapper">
-              <img
-                className="thumbnail"
-                src={thumb_img}
-                alt="thumbnail"
-              ></img>
+              <img className="thumbnail" src={thumb_img} alt="thumbnail"></img>
             </div>
             <div className="cellvideoText">
               <div className="cellvideoTitle">{video_title}</div>
-              <div className={cx("cellvideoDescribe", {isHovered: isHoveredVideoItem})}>
-                {isHoveredVideoItem ?  <HoverItem/>: <span>{video_describe}</span>}
+              <div
+                className={cx('cellvideoDescribe', {
+                  isHovered: isHoveredVideoItem,
+                })}
+              >
+                {isHoveredVideoItem ? (
+                  <HoverItem />
+                ) : (
+                  <span>{video_describe}</span>
+                )}
               </div>
             </div>
           </div>
         </div>
-        <div className="cell status">{statusComponent}{video_status === true ?  '공개' :  '비공개'}</div>
-        <div className="cell copyright">{video_copyright === true ? '저작권' : '없음'}</div>
+        <div className="cell status">
+          {statusComponent}
+          {video_status === true ? '공개' : '비공개'}
+        </div>
+        <div className="cell copyright">
+          {video_copyright === true ? '저작권' : '없음'}
+        </div>
         <div className="cell date">
           <div className="cellDate">
             <div>{formatTime(created_time)}</div>

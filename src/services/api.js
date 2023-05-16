@@ -45,6 +45,7 @@ const getVideoList = () => {
 const getStudioVideoList = () =>{
   const data = [
     {
+      video_id: 'YudHcBIxlYw',
       video_title: 'JISOO - ‘꽃(FLOWER)’ M/V',
       thumb_img: 'https://i.ytimg.com/vi/YudHcBIxlYw/hqdefault.jpg',
       video_describe: '영상 설명입니다 ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ',
@@ -57,6 +58,7 @@ const getStudioVideoList = () =>{
       
     },
     {
+      video_id: '1wvz8Rs7dgc',
       video_title: "[리무진서비스] EP.56 만우절 특집 with 방탄소년단 지민 | April Fools' Day Special with...",
       thumb_img: 'https://i.ytimg.com/vi/1wvz8Rs7dgc/hqdefault.jpg',
       video_describe: '영상 설명22입니다 ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ',
@@ -68,6 +70,7 @@ const getStudioVideoList = () =>{
       like_count: 138
     },
     {
+      video_id: 'u9Y3hZ9UP9I',
       video_title: '풍자가 30번 넘게 간 강원도 원주 찐맛집 공개 | 또간집 EP.25',
       thumb_img: 'https://i.ytimg.com/vi/u9Y3hZ9UP9I/hqdefault.jpg',
       video_describe: '영상 설명입니다 ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ',
