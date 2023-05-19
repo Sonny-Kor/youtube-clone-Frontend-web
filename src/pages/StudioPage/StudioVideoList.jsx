@@ -10,6 +10,7 @@ import './StudioVideoList.scss';
 function StudioVideoList() {
   const [currentCheck, setCurrentCheck] = useState([]);
   const [videoList, setvideoList] = useState([]);
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +19,6 @@ function StudioVideoList() {
         setvideoList(response);
 
         const initCheck = [];
-        // const initCheck = [response.map(video => ({
-        //   name: video.video_title,
-        //   isChecked: false
-        // })]);
         setCurrentCheck(initCheck);
       } catch (error) {
         console.error('data fetch error', error);
@@ -38,27 +35,25 @@ function StudioVideoList() {
       } else {
         return prevCheck.filter((id) => id !== videoId);
       }
-      // const updatedCheck = prevCheck.map(item => {
-      //   if (item.name === name) {
-      //     return {
-      //       ...item,
-      //       isChecked: checked
-      //     };
-      //   }
-      //   return item;
-      // });
-      // return updatedCheck;
     });
   };
   const allCheckChange = (name, checked) => {
     setCurrentCheck(checked ? videoList.map((item) => item.video_id) : []);
-    // setCurrentCheck(prevCheck =>
-    //   prevCheck.map(item => ({
-    //     ...item,
-    //     isChecked: checked
-    //   }))
-    //   );
   };
+
+  const handleSortClick = () => {
+    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newSortOrder);
+    const sortedList = [...videoList].sort((a, b) => {
+      const compareResult =
+        sortOrder === 'asc'
+          ? new Date(a.created_time) - new Date(b.created_time)
+          : new Date(b.created_time) - new Date(a.created_time);
+      return compareResult;
+    });
+    setvideoList(sortedList);
+  };
+
   console.log(currentCheck);
   return (
     <div className="StudioVideoList">
@@ -71,7 +66,9 @@ function StudioVideoList() {
         <div className="cell copyright">제한사항</div>
         <div className="cell date">
           날짜
-          <ArrowDownwardIcon className="arrowIcon" />
+          <ArrowDownwardIcon
+            className={`arrowIcon ${sortOrder === 'asc' ? 'asc' : 'desc'}`}
+            onClick={handleSortClick}/>
         </div>
         <div className="cell view">조회수</div>
         <div className="cell comment">댓글</div>

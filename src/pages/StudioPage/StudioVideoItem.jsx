@@ -50,7 +50,7 @@ function StudioVideoItem({
     >
       <div className="tableRow">
         <div className="cell checkbox">
-          <CheckBox name={video_id} onChange={onChange} isChecked={checked} />
+          <CheckBox name={video_id} onChange={onChange} value={checked} />
         </div>
         <div className="cell summary">
           <div className="cellVideo">

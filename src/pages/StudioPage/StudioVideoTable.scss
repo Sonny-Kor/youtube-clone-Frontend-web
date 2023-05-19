@@ -38,6 +38,7 @@
       gap: 42px;
 
       div {
+        padding: 5px;
         width: max-content;
         font-family: 'Inter';
         font-style: normal;
@@ -193,6 +194,17 @@
           vertical-align: middle;
           width: 22px;
           height: 22px;
+          cursor: pointer;
+        
+          &.asc {
+            transform: rotate(0deg); /* Initial direction of the icon */
+            transition: transform 0.2s ease-in-out; /* Smooth transition animation effect */
+          }
+        
+          &.desc {
+            transform: rotate(180deg); /* Reverse direction of the icon */
+            transition: transform 0.2s ease-in-out; /* Smooth transition animation effect */
+          }
         }
       }
     }
