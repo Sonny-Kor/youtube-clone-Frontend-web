@@ -65,7 +65,7 @@ function StudioVideoItem({
                 })}
               >
                 {isHoveredVideoItem ? (
-                  <HoverItem />
+                  <HoverItem className="hoverItem"/>
                 ) : (
                   <span>{video_describe}</span>
                 )}
