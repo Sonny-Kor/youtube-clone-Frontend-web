@@ -51,7 +51,7 @@ const getStudioVideoList = () =>{
       video_describe: '영상 설명입니다 ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ',
       video_status: true,
       video_copyright: false,
-      created_time: 1680089460,
+      created_time: 16800894601,
       view_count: 1140000,
       comment_count: 1234,
       like_count: 138
@@ -64,7 +64,7 @@ const getStudioVideoList = () =>{
       video_describe: '영상 설명22입니다 ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ',
       video_status: false,
       video_copyright: false,
-      created_time: 1680089460,
+      created_time: 168008946,
       view_count: 1140000,
       comment_count: 1234,
       like_count: 138
