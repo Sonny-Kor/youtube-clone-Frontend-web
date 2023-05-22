@@ -19,10 +19,7 @@ function StudioVideoTable(props) {
           <div>팟캐스트</div>
         </div>
       </div>
-      <div className="tableFilter">
-        <FilterListIcon className="filterIcon" />
-        <div className="filterText">필터</div>
-      </div>
+      
       <div className="videoTable">
         <StudioVideoList />
       </div>

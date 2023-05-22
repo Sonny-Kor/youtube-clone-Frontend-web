@@ -1,0 +1,108 @@
+.StudioHeader {
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 10px;
+  z-index: 10;
+  top: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+  position: fixed;
+  width: 100%;
+  .leftSide {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    gap: 16px;
+    .frame1 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 4px;
+      gap: 16px;
+      width: 44px;
+      height: 44px;
+      color: #ccc;
+      .menu {
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        user-select: none;
+      }
+    }
+    .youTube {
+      text-decoration: none;
+      user-select: none;
+      width: max-content;
+      font-family: "Noto Sans";
+      font-style: normal;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 24px;
+      color: black;
+    }
+  }
+  .centerSide {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 0;
+    flex-grow: 1;
+    height: 100%;
+    .searchBarSelectedBackground {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+    }
+  }
+  .rightSide {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 16px;
+    gap: 10px;
+
+    .loginButton {
+      box-sizing: border-box;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 10px;
+
+      border: 1px solid #cccccc;
+      border-radius: 24px;
+      &:hover {
+        background: #f0f0f0;
+      }
+      .accountCircle {
+        width: 24px;
+        height: 24px;
+        color: #0088ff;
+      }
+      .login {
+        height: 100%;
+        width: max-content;
+
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #0088ff;
+      }
+    }
+  }
+}
