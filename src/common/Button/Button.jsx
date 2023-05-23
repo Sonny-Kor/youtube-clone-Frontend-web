@@ -1,11 +1,11 @@
 import React from 'react';
-import './ToolTip.scss';
+import './Button.scss';
 
 
-function ToolTip ({children, description }) {
+function Button ({children, description }) {
   
   return (
-    <div className="ToolTip">
+    <div className="Button">
       {children}
       {description &&
         <div className="description">{description}</div>
@@ -14,4 +14,4 @@ function ToolTip ({children, description }) {
   );
 };
 
-export default ToolTip;
+export default Button;

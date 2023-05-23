@@ -1,6 +1,15 @@
+body, #root {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
 .StudioPage {
+  height: 100%;
   .tableWrapper {
-    margin-left: 288px;
-    margin-top: 48px;
+    box-sizing: border-box;
+    height: 100%;
+    padding-left: 288px;
+    padding-top: 88px;
   }
 }

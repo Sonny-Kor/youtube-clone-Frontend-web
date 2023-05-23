@@ -82,7 +82,7 @@ const getStudioVideoList = () =>{
       like_count: 1348
     } 
   ];
-  return [...data];
+  return [...data ,...data,...data];
 }
 
 export { getVideoList, getStudioVideoList  };

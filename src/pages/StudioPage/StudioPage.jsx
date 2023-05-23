@@ -1,13 +1,13 @@
 import React from 'react';
 
 import StudioVideoTable from '../StudioPage/StudioVideoTable';
-import StudioHeader from './StudioHeader';
+import Header from '../../common/Header/Header';
 import './StudioPage.scss';
 
 function StudioPage(props) {
   return (
     <div className="StudioPage">
-      <StudioHeader/>
+      <Header/>
         <div className='tableWrapper'>
           <StudioVideoTable />
         </div>

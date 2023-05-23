@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import ToolTip from '../../common/ToolTip/ToolTip'
+import Button from '../../common/Button/Button'
 import './HoverItem.scss';
 import EditIcon from '@mui/icons-material/Edit';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
@@ -14,41 +14,41 @@ function HoverItem(props) {
 
   return (
     <div className="HoverItem">
-      <ToolTip description={tooltipValue}>
+      <Button description={tooltipValue}>
         <EditIcon
           className="editIcon"
           onMouseEnter={() => setTooltipValue('세부정보')}
           onMouseLeave={() => setTooltipValue('')}
         />
-      </ToolTip>
-      <ToolTip description={tooltipValue}>
+      </Button>
+      <Button description={tooltipValue}>
         <InsertChartIcon
           className="chartIcon"
           onMouseEnter={() => setTooltipValue('분석')}
           onMouseLeave={() => setTooltipValue('')}
         />
-      </ToolTip>
-      <ToolTip description={tooltipValue}>
+      </Button>
+      <Button description={tooltipValue}>
         <CommentIcon
           className="commentIcon"
           onMouseEnter={() => setTooltipValue('댓글')}
           onMouseLeave={() => setTooltipValue('')}
         />
-      </ToolTip>
-      <ToolTip description={tooltipValue}>
+      </Button>
+      <Button description={tooltipValue}>
         <SmartDisplayIcon
           className="videoIcon"
           onMouseEnter={() => setTooltipValue('Youtube에서 보기')}
           onMouseLeave={() => setTooltipValue('')}
         />
-      </ToolTip>
-      <ToolTip description={tooltipValue}>
+      </Button>
+      <Button description={tooltipValue}>
         <MoreVertIcon
           className="moreIcon"
           onMouseEnter={() => setTooltipValue('옵션')}
           onMouseLeave={() => setTooltipValue('')}
         />
-      </ToolTip>
+      </Button>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import UploadIcon from '@mui/icons-material/Upload';
 
 import './UploadModal.scss'; 
-import ToolTip from '../../common/ToolTip/ToolTip';
+import Button from '../../common/Button/Button';
 
 const UploadModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,12 +29,12 @@ const UploadModal = () => {
             <div className='modalHeader'>
               동영상 업로드
               <div className='modalIcon'>
-                <ToolTip description="의견 보내기">
+                <Button description="의견 보내기">
                   <SmsFailedIcon />
-                </ToolTip>
-                <ToolTip description="닫기">
+                </Button>
+                <Button description="닫기">
                   <CloseIcon onClick={closeModal}/>
-                </ToolTip>
+                </Button>
               </div>
             </div>
             <div className='modalContent'>
