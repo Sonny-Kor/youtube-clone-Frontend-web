@@ -1,0 +1,25 @@
+.VideoPage {
+  .videoBody {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 68px;
+
+    .videoContent {
+      width: 740px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px;
+      gap: 30px;
+    }
+    .rvideoListWrapper {
+      width: 426px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px 30px 30px 0px;
+    }
+  }
+}

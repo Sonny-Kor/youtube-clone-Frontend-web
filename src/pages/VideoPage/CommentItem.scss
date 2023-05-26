@@ -1,0 +1,54 @@
+.CommentItem {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 15px;
+  .profileCircle {
+    background: #d9d9d9;
+    border-radius: 22px;
+    width: 40px;
+    height: 40px;
+  }
+  .commentWrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    .itemHead {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      align-items: center;
+      .username {
+        font-size: 5px;
+      }
+      .createdTime {
+        color: var(--secondary-text-color);
+        font-size: 5px;
+      }
+    }
+    .commentContent {
+      font-size: 15px;
+      word-break: break-all;
+    }
+    .commentOption {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 50px;
+      .likeWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+        .likeCount {
+          font-size: 13px;
+          line-height: 2px;
+        }
+      }
+      .reComment {
+        font-size: 13px;
+      }
+    }
+  }
+}
