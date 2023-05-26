@@ -1,0 +1,30 @@
+.PlayListPage {
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 288px;
+    margin-top: 88px;
+    z-index: 1;
+    @media (max-width: 1300px) {
+      margin-left: 200px;
+    }
+
+    .playListWrapper {
+      flex-grow: 1;
+      display: flex;
+      margin-left: 50px;
+      .titleWrapper {
+        display: flex;
+        flex-direction: row;
+        width: 360px;
+        align-items: stretch;
+      }
+      .videoWrapper {
+        display: flex;
+        flex: 1;
+      }
+    }
+  }
+}
