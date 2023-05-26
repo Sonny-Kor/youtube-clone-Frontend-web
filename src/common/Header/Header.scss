@@ -1,107 +1,226 @@
 .Header {
-  background-color: white;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 16px;
-  gap: 10px;
-  z-index: 10;
-  top: 0;
-
-  position: fixed;
-  width: 100%;
-  .leftSide {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 8px;
-    gap: 16px;
-    .frame1 {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 4px;
-      gap: 16px;
-      width: 44px;
-      height: 44px;
-      color: #ccc;
-      .menu {
-        cursor: pointer;
-        width: 36px;
-        height: 36px;
-        user-select: none;
-      }
-    }
-    .youTube {
-      text-decoration: none;
-      user-select: none;
-      width: max-content;
-      font-family: "Noto Sans";
-      font-style: normal;
-      font-weight: 900;
-      font-size: 24px;
-      line-height: 24px;
-      color: black;
-    }
-  }
-  .centerSide {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 0;
-    flex-grow: 1;
-    height: 100%;
-    .searchBarSelectedBackground {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
+  #asideBar {
+    display: none;
+    &:checked + .hAsideBar {
       left: 0;
-      background-color: transparent;
+    }
+    &:checked + .backGround {
+      opacity: 1;
+      visibility: visible;
     }
   }
-  .rightSide {
+  .head {
+    background-color: white;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0px 16px;
     gap: 10px;
-
-    .loginButton {
-      box-sizing: border-box;
-      cursor: pointer;
+    z-index: 10;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    .leftSide {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 8px;
+      gap: 16px;
+      .frame1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 4px;
+        gap: 16px;
+        width: 44px;
+        height: 44px;
+        color: #ccc;
+        .menu {
+          cursor: pointer;
+          width: 36px;
+          height: 36px;
+          user-select: none;
+        }
+      }
+      .youTube {
+        text-decoration: none;
+        user-select: none;
+        width: max-content;
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 24px;
+        color: black;
+      }
+    }
+    .centerSide {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 0;
+      flex-grow: 1;
+      height: 100%;
+      .searchBarSelectedBackground {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+      }
+    }
+    .rightSide {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 12px 16px;
+      padding: 0px 16px;
       gap: 10px;
 
-      border: 1px solid #cccccc;
-      border-radius: 24px;
-      &:hover {
-        background: #f0f0f0;
-      }
-      .accountCircle {
-        width: 24px;
-        height: 24px;
-        color: #0088ff;
-      }
-      .login {
-        height: 100%;
-        width: max-content;
+      .loginButton {
+        box-sizing: border-box;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 10px;
 
-        font-family: "Inter";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
+        border: 1px solid #cccccc;
+        border-radius: 24px;
+        &:hover {
+          background: #f0f0f0;
+        }
+        .accountCircle {
+          width: 24px;
+          height: 24px;
+          color: #0088ff;
+        }
+        .login {
+          height: 100%;
+          width: max-content;
 
-        color: #0088ff;
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+
+          color: #0088ff;
+        }
       }
     }
+  }
+  .body {
+    background-color: white;
+    box-sizing: border-box;
+    display: flex;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    .hAsideBar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 240px;
+      height: 100%;
+      transition: all 0.35s;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background-color: #ffffff;
+      .asideBarHead {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px;
+        gap: 16px;
+        .frame1 {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 4px;
+          gap: 16px;
+          width: 44px;
+          height: 44px;
+          color: #ccc;
+          .menu {
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            user-select: none;
+          }
+        }
+        .youTube {
+          text-decoration: none;
+          user-select: none;
+          width: max-content;
+          font-family: 'Noto Sans';
+          font-style: normal;
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 24px;
+          color: black;
+        }
+      }
+      .asideGroup {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px 16px;
+        width: 240px;
+        .asideItem {
+          width: 240px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 12px 16px;
+          gap: 24px;
+          box-sizing: border-box;
+          border: none;
+          background-color: #ffffff;
+          &:hover {
+            cursor: pointer;
+            background: red;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+          }
+          .asideText {
+            width: max-content;
+            font-family: 'Noto Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            color: #333333;
+          }
+        }
+      }
+      .underLine {
+        width: 240px;
+        height: 1px;
+        background: #cccccc;
+      }
+    }
+  }
+  .backGround {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.35s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 15;
   }
 }

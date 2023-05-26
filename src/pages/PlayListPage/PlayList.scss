@@ -1,0 +1,37 @@
+.PlayList {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  gap: 8px;
+  .header {
+    padding: 16px 0 8px 36px;
+    .btnSort {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      cursor: pointer;
+      border: none;
+      background-color: #ffffff;
+      .btnText {
+        width: max-content;
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #333333;
+      }
+    }
+  }
+  .pVideoList {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    gap: 8px;
+  }
+}

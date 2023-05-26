@@ -1,0 +1,10 @@
+.SVideoList {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+
+  width: 0;
+  flex-grow: 1;
+}

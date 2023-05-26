@@ -1,0 +1,146 @@
+.NowVideoItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  flex: 1;
+  .nowThumbnailWrapper {
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: #d9d9d9;
+    display: flex;
+    padding: 0px;
+    overflow: hidden;
+    aspect-ratio: 7 / 4.5;
+    .thumbnail {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .nowInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+    .videoTitle {
+      color: var(--primary-text-color);
+      font-weight: 1000;
+      font-size: 40px;
+      word-break: break-all;
+    }
+    .channelWrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .channelInfo {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        .profileWrapper {
+          display: flex;
+          flex-direction: row;
+          gap: 15px;
+          .profileCircle {
+            background: #d9d9d9;
+            border-radius: 22px;
+            width: 44px;
+            height: 44px;
+          }
+          .nameWrapper {
+            display: flex;
+            flex-direction: column;
+            .channelName {
+              color: var(--secondary-text-color);
+              font-size: 30px;
+            }
+            .subscriberCount {
+              color: var(--secondary-text-color);
+              font-size: 20px;
+            }
+          }
+        }
+        .btnWrapper {
+          display: flex;
+          width: 130px;
+          .subscribeBtn {
+            border: 2px solid black;
+            border-radius: 24px;
+            background-color: #000000;
+            color: #ffffff;
+            width: 60px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 0, 16px;
+            box-sizing: border-box;
+          }
+        }
+      }
+      .morVideoFunc {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        .likeWrapper {
+          display: flex;
+          flex-direction: row;
+          border: 1px solid #cccccc;
+          border-radius: 24px;
+          background-color: #f0f0f0;
+          padding: 5px;
+          .icon {
+            width: 36px;
+          }
+          .likeCount {
+            color: var(--secondary-text-color);
+            font-size: 20px;
+            line-height: 24px;
+          }
+        }
+        .moreArea {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 0px;
+          gap: 8px;
+          width: 36px;
+          height: 36px;
+          position: relative;
+          .icon {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .descriptionWrapper {
+      display: flex;
+      border: 1px solid #f0f0f0;
+      border-radius: 12px;
+      background-color: #f0f0f0;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px;
+      gap: 4px;
+      .videoInfor {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        .viewCounter {
+          color: var(--primary-text-color);
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 16px;
+        }
+        .uploadedTime {
+          color: var(--primary-text-color);
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+}
