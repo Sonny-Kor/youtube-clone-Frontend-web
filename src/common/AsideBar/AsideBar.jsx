@@ -1,42 +1,38 @@
 import React from 'react';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
+import VideoLibraryOutlinedIcon from '@mui/icons-material/VideoLibraryOutlined';
 
 import './AsideBar.scss';
 
 function AsideBar() {
   return (
-    <div className="AsideBar">
-      <div className="asideGroup">
-        <div className="asideItem">
-          <div className="asideItemIcon"></div>
+    <div className="AsideBar expand">
+      <div className="asideGroup min">
+        <button className="asideItem">
+          <div className="asideItemIcon"><HomeOutlinedIcon /></div>
           <div className="asideText">홈</div>
-        </div>
-        <div className="asideItem">
-          <div className="asideItemIcon"></div>
-          <div className="asideText">Shorts</div>
-        </div>
-        <div className="asideItem">
-          <div className="asideItemIcon"></div>
+        </button>
+        <button className="asideItem">
+          <div className="asideItemIcon"><SubscriptionsOutlinedIcon/></div>
           <div className="asideText">구독</div>
-        </div>
+        </button>
       </div>
       <div className="underLine"></div>
-      <div className="asideGroup">
-        <div className="asideItem">
-          <div className="asideItemIcon"></div>
+      <div className="asideGroup min">
+        <button className="asideItem">
+          <div className="asideItemIcon"><VideoLibraryOutlinedIcon /></div>
           <div className="asideText">보관함</div>
-        </div>
-        <div className="asideItem">
-          <div className="asideItemIcon"></div>
-          <div className="asideText">시청 기록</div>
-        </div>
+        </button>
       </div>
       <div className="underLine"></div>
       <div className="asideGroup">
         <div className="loginAlert">
           <div className="loginText">
-            로그인하면 동영상에 좋아요를 표시하고 댓글을 달거나 구독할 수 있습니다.
+            로그인하면 동영상에 좋아요를 표시하고 댓글을 달거나 구독할 수
+            있습니다.
           </div>
           <div className="loginButton">
             <div className="accountCircle">

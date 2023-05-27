@@ -1,0 +1,44 @@
+.PlayListTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 360px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid black;
+  border-radius: 16px;
+  box-sizing: border-box;
+  position: fixed;
+  gap: 12px;
+  .thumbnailWrapper {
+    display: flex;
+    box-sizing: border-box;
+    width: 320px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid black;
+    border-radius: 16px;
+    overflow: hidden;
+    .thumbnail {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .titleBodyWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    .playListNameWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .openOption {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

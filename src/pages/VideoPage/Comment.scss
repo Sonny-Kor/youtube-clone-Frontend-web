@@ -1,0 +1,33 @@
+.Comment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 25px;
+  .head {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    .commentCount {
+      color: var(--primary-text-color);
+      font-size: 18px;
+    }
+    .commentSort {
+      display: flex;
+      flex-direction: row;
+      gap: 3px;
+      .sortTxt {
+        color: var(--primary-text-color);
+        font-size: 18px;
+      }
+    }
+  }
+  .commentAdd {
+    display: flex;
+    width: 100%;
+  }
+  .commentItem {
+    display: flex;
+    width: 100%;
+  }
+}
