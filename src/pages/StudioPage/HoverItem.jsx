@@ -10,7 +10,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 function HoverItem(props) {
   const [tooltipValue, setTooltipValue] = useState('');
   
-  console.log(tooltipValue);
 
   return (
     <div className="HoverItem">

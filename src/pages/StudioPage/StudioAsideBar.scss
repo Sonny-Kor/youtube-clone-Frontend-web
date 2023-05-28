@@ -1,0 +1,136 @@
+.StudioAsideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 240px;
+  left: 20px;
+  margin-top: 88px;
+  position: fixed;
+  .asideGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .channelFrame{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      .profileCircle{
+        cursor: pointer;
+        background: #d9d9d9;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        filter: brightness(1.0);
+        &:hover{
+          filter: brightness(0.5);
+        }
+      }
+      .profileWrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        .channelName{
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          line-height: 24px;
+          font-size: 18px;
+        }
+        .userName{
+          opacity: 0.6;
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+      
+    }
+   
+    .asideItem {
+      width: 240px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 24px;
+      box-sizing: border-box;
+      border: none;
+      background-color: #ffffff;
+      &:hover {
+        cursor: pointer;
+        background: red;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+      }
+      .asideText {
+        width: max-content;
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        color: #333333;
+      }
+    }
+  }
+  @media (max-width: 1300px) {
+    &.expand {
+      display: flex;
+      width: 88px;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+    }
+    .asideGroup,
+    .underLine {
+      display: none;
+    }
+    .min {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 0px 16px;
+      width: 100px;
+      .asideItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 8px;
+        width: 60px;
+        border-radius: 16px;
+        &:hover {
+          cursor: pointer;
+          background: red;
+          background: rgba(0, 0, 0, 0.1);
+          border-radius: 16px;
+        }
+        .asideText {
+          width: max-content;
+          font-family: 'Noto Sans';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 11px;
+          line-height: 11px;
+          color: #333333;
+        }
+      }
+    }
+  }
+  &.expand {
+  }
+}
+.underLine {
+  width: 240px;
+  height: 1px;
+
+  background: #cccccc;
+}

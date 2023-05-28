@@ -7,7 +7,7 @@ import CheckBox from '../../common/CheckBox/CheckBox';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import './StudioVideoList.scss';
 
-function StudioVideoList() {
+function StudioVideoList( {onHandleSelection}) {
   const [currentCheck, setCurrentCheck] = useState([]);
   const [videoList, setvideoList] = useState([]);
   const [sortOrder, setSortOrder] = useState('asc');
@@ -20,6 +20,7 @@ function StudioVideoList() {
 
         const initCheck = [];
         setCurrentCheck(initCheck);
+        
       } catch (error) {
         console.error('data fetch error', error);
       }
@@ -30,14 +31,16 @@ function StudioVideoList() {
   const handleChange = (videoId, checked) => {
     setCurrentCheck((prevCheck) => {
       if (checked) {
-        console.log([...prevCheck, videoId]);
+        onHandleSelection([...prevCheck, videoId]);
         return [...prevCheck, videoId];
-      } else {
+      } else {    
+        onHandleSelection(prevCheck.filter((id) => id !== videoId));
         return prevCheck.filter((id) => id !== videoId);
       }
     });
   };
   const allCheckChange = (name, checked) => {
+    onHandleSelection(checked ? videoList.map((item) => item.video_id) : []);
     setCurrentCheck(checked ? videoList.map((item) => item.video_id) : []);
   };
 
@@ -54,7 +57,6 @@ function StudioVideoList() {
     setvideoList(sortedList);
   };
 
-  console.log(currentCheck);
   return (
     <div className="StudioVideoList">
       <div className="tableRow header">
