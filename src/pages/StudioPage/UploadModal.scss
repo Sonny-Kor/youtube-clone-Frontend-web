@@ -1,5 +1,5 @@
 .UploadModal {
-  .uploadButton {
+  .uploadModalButton {
     display: inline-flex;
     overflow: hidden;
     font-size: 14px;
@@ -12,6 +12,7 @@
     text-align: center;
     border: none;
     cursor: pointer;
+    background-color: #fff;
 
     justify-content: center;
   }

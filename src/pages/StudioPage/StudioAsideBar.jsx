@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
@@ -16,12 +18,66 @@ function StudioAsideBar() {
     channelImage: '',
   });
 
+  const [editing, setEditing] = useState(false);
+  const [name, setName] = useState(channelInfo.name);
+  const [description, setDescription] = useState(channelInfo.description);
+
+  function handleFileInputChange(event) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const base64String = reader.result;
+        const imageURL = `data:image/png;base64,${base64String}`;
+        setChannelInfo({
+          name: channelInfo.name,
+          description: channelInfo.description,
+          channelImage: imageURL,
+        }); 
+      };
+
+      reader.readAsDataURL(file);
+      console.log(reader);
+    }
+  }
+  const handleEditClick = () => {
+    setEditing(true);
+  };
+  const handleEditCloseClick = () => {
+    setEditing(false);
+  };
+
+  const handleSaveClick = async () => {
+    setEditing(false);
+
+
+    const data = await api.editChannelInfo(name, description);
+    const imageURL = `data:image/png;base64, ${data.channelImage}`;
+
+    setChannelInfo({
+      name: data.title,
+      description: data.description,
+      channelImage: imageURL,
+    });
+    // api.editChannelInfo(name,description,channelInfo.channelImage);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
+
   useEffect(() => {
     const fetchChannelInfo = async () => {
       try {
-        const data = await api.getChannelInfo(); 
+        const data = await api.getChannelInfo();
         const imageURL = `data:image/png;base64, ${data.channelImage}`;
-        
+
         setChannelInfo({
           name: data.title,
           description: data.description,
@@ -31,7 +87,7 @@ function StudioAsideBar() {
         console.error('Error fetching channel info:', error);
       }
     };
-    
+
     fetchChannelInfo();
   }, []);
 
@@ -47,8 +103,48 @@ function StudioAsideBar() {
             ></img>
           </Button>
           <div className="profileWrapper">
-            <div className="channelName">{channelInfo.name}</div>
-            <div className="userName">{channelInfo.description}</div>
+
+            <div className="rowWrapper">
+
+              <div className="channelName">
+
+                {editing ? (
+                  <span >채널명
+                    <textarea
+                      className='inputDescription'
+                      value={name}
+                      onChange={handleNameChange}
+                      placeholder={channelInfo.name}
+                      maxlength="28"
+                      style={{ color: '#3d3d3d' }}
+                    />
+                  </span>
+                ) : (
+                  <span>{channelInfo.name}</span>
+                )}
+              </div>
+              {!editing && <SettingsIcon style={{ color: '#3d3d3d', cursor: 'pointer' }} onClick={handleEditClick} />}
+            </div>
+
+            <div className="userName">
+              {editing ? (
+                <span>채널 설명
+                  <textarea className='inputDescription'
+                    value={description}
+                    placeholder={channelInfo.description}
+                    maxlength="150"
+                    onChange={handleDescriptionChange} />
+                </span>
+              ) : (
+                <span>{channelInfo.description}</span>
+              )}
+            </div>
+            <div className='rowWrapper'>
+              {editing && <button className='saveButton' onClick={() => this.fileInput.click()}>썸네일 수정</button>}
+              
+              {editing && <button className='saveButton' onClick={handleSaveClick}>저장</button>}
+              {editing && <button className='saveButton' onClick={handleEditCloseClick}>취소</button>}
+            </div>
           </div>
         </div>
       </div>

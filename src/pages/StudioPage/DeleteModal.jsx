@@ -35,8 +35,8 @@ const DeleteModal = (
 
   return (
     <div className="DeleteModal">
-      <button className="deleteButton" onClick={handleButtonClick}>
-        <DeleteForeverIcon style={{ color: 'red' }} /> 삭제
+      <button className="deleteModalButton" onClick={handleButtonClick}>
+        <DeleteForeverIcon style={{ color: 'red' }} /> 동영상 삭제
       </button>
       {isLoading && (
         <div className="loadingOverlay">

@@ -67,8 +67,8 @@ const UploadModal = () => {
 
   return (
     <div className="UploadModal">
-      <button className="uploadButton" onClick={handleButtonClick}>
-        <VideoCallIcon style={{ color: 'red' }} /> 만들기
+      <button className="uploadModalButton" onClick={handleButtonClick}>
+        <VideoCallIcon style={{ color: 'red' }} /> 동영상 업로드
       </button>
       {isLoading && (
         <div className="loadingOverlay">
