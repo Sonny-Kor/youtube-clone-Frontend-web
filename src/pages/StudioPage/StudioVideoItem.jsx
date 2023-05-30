@@ -5,6 +5,7 @@ import {
   formatCountNumber,
   formatTime,
   formatComma,
+  formatDate
 } from '../../common/functions';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -50,7 +51,7 @@ function StudioVideoItem({
     >
       <div className="tableRow">
         <div className="cell checkbox">
-          <CheckBox name={video_id} onChange={onChange} isChecked={checked} />
+          <CheckBox name={video_id} onChange={onChange} value={checked} />
         </div>
         <div className="cell summary">
           <div className="cellVideo">
@@ -65,7 +66,7 @@ function StudioVideoItem({
                 })}
               >
                 {isHoveredVideoItem ? (
-                  <HoverItem />
+                  <HoverItem className="hoverItem"/>
                 ) : (
                   <span>{video_describe}</span>
                 )}
@@ -82,7 +83,7 @@ function StudioVideoItem({
         </div>
         <div className="cell date">
           <div className="cellDate">
-            <div>{formatTime(created_time)}</div>
+            <div>{formatDate(created_time)}</div>
             <div>게시 날짜</div>
           </div>
         </div>

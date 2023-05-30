@@ -1,5 +1,22 @@
-.StudioPage {
-  box-sizing: border-box;
-  width: 100%;
+body, #root {
   height: 100%;
+}
+body {
+  height: 100%;
+}
+.StudioPage {
+  height: 100%;
+  .asideBar{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 88px;
+  }
+  .tableWrapper {
+    box-sizing: border-box;
+    height: 100%;
+    padding-left: 288px;
+    padding-top: 88px;
+  }
 }
