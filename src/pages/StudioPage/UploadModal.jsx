@@ -4,7 +4,7 @@ import SmsFailedIcon from '@mui/icons-material/SmsFailed';
 import CloseIcon from '@mui/icons-material/Close';
 import UploadIcon from '@mui/icons-material/Upload';
 import './UploadModal.scss';
-import Button from '../../common/Button/Button';
+import Button from '../../common/Button/TransparentButton';
 import axios from 'axios';
 import * as api from '../../services/studioPage_api';
 

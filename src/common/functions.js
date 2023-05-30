@@ -78,5 +78,18 @@ const disableFullscreen = () => {
     document.exitFullscreen();
   }
 }
+/**
+ * @description "2023-05-27T18:25:32" 같은 형식의 날자를 YYYY.MM.DD 로 변환합니다.
+ * @param {number} countNumber
+ * @return {string}
+ */
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${year}.${month}.${day}`;
+  return formattedDate;
+}
 
-export { formatCountNumber, formatTime, formatComma, enableFullscreen, disableFullscreen };
+export { formatCountNumber, formatTime, formatComma, enableFullscreen, disableFullscreen ,formatDate};

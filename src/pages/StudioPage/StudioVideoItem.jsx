@@ -5,6 +5,7 @@ import {
   formatCountNumber,
   formatTime,
   formatComma,
+  formatDate
 } from '../../common/functions';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -82,7 +83,7 @@ function StudioVideoItem({
         </div>
         <div className="cell date">
           <div className="cellDate">
-            <div>{formatTime(created_time)}</div>
+            <div>{formatDate(created_time)}</div>
             <div>게시 날짜</div>
           </div>
         </div>

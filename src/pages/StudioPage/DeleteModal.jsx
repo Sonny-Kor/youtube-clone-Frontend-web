@@ -3,7 +3,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import SmsFailedIcon from '@mui/icons-material/SmsFailed';
 import CloseIcon from '@mui/icons-material/Close';
 import './DeleteModal.scss';
-import Button from '../../common/Button/Button';
+import Button from '../../common/Button/TransparentButton';
 import axios from 'axios';
 import * as api from '../../services/studioPage_api.js';
 

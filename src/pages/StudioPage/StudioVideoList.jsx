@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import * as api from '../../services/api';
+import * as s_api from '../../services/studioPage_api'
 
 import StudioVideoItem from './StudioVideoItem';
 import CheckBox from '../../common/CheckBox/CheckBox';
@@ -15,8 +16,9 @@ function StudioVideoList( {onHandleSelection}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //const response = await api.getStudioVideoList();
-        //setvideoList(response);
+        const myvideo_response = await s_api.getChannelVideo();
+        console.log(myvideo_response)
+        setvideoList(myvideo_response);
 
         const initCheck = [];
         setCurrentCheck(initCheck);
@@ -79,17 +81,18 @@ function StudioVideoList( {onHandleSelection}) {
       <div>
         {videoList.map((video, index) => (
           <StudioVideoItem
-            checked={currentCheck.find((id) => id === video.video_id)}
-            video_id={video.video_id}
-            video_title={video.video_title}
-            thumb_img={video.thumb_img}
-            video_describe={video.video_describe}
-            video_status={video.video_status}
-            video_copyright={video.video_copyright}
-            created_time={video.created_time}
-            view_count={video.view_count}
-            comment_count={video.comment_count}
-            like_count={video.like_count}
+            checked={currentCheck.find((id) => id === video.videoId)}
+            key={video.videoId}
+            video_id={video.videoId}
+            video_title={video.title}
+            thumb_img={`http://118.34.185.100:54114//media/vods/${video.videoId}/thumbnail.jpg`}
+            video_describe={video.description}
+            video_status={true}
+            video_copyright={'없음'}
+            created_time={video.createdTime}
+            view_count={video.viewCount}
+            comment_count={'12'}
+            like_count={`12`}
             onChange={handleChange}
           />
         ))}

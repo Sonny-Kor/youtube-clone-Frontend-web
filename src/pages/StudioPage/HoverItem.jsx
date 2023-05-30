@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Button from '../../common/Button/Button'
+import Button from '../../common/Button/TransparentButton'
 import './HoverItem.scss';
 import EditIcon from '@mui/icons-material/Edit';
 import InsertChartIcon from '@mui/icons-material/InsertChart';

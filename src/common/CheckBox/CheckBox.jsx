@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { useState } from 'react';
 import './CheckBox.scss';
 
-function CheckBox({ name, value, onChange }) {
+function CheckBox({ name, isChecked, onChange }) {
   const handleChange = (event) => {
     const checked = event.target.checked;
     onChange(name, checked);
@@ -12,7 +12,7 @@ function CheckBox({ name, value, onChange }) {
     <div className="CheckBox">
       <input
         type="checkbox"
-        checked={value}
+        checked={isChecked}
         onChange={handleChange}
         name={name}
       />

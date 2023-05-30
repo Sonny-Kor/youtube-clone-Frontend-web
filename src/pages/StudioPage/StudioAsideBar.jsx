@@ -6,7 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
 import VideoLibraryOutlinedIcon from '@mui/icons-material/VideoLibraryOutlined';
-import Button from '../../common/Button/Button';
+import Button from '../../common/Button/TransparentButton';
 import * as api from '../../services/studioPage_api';
 
 import './StudioAsideBar.scss';
