@@ -26,28 +26,24 @@ function NowVideoItem({
   like,
 }) {
   createdTime = new Date(createdTime).getTime() / 1000;
-  const access_token = cookie.getCookie('access_token');
-  const header = {
-    Authorization: 'Bearer' + access_token,
-  };
   const postSubscribeCount = async () => {
     console.log('post');
-    await api.postSubscribeCount(channelId, access_token, header);
+    await api.postSubscribeCount(channelId);
   };
 
   const deleteSubscribeCount = async () => {
     console.log('delete');
-    await api.deleteSubscribeCount(channelId, access_token, header);
+    await api.deleteSubscribeCount(channelId);
   };
 
   const postVideoLikeCount = async () => {
     console.log('post');
-    await api.postVideoLikeCount(videoId, access_token, header);
+    await api.postVideoLikeCount(videoId);
   };
 
   const deleteVideoLikeCount = async () => {
     console.log('delete');
-    await api.deleteVideoLikeCount(videoId, access_token, header);
+    await api.deleteVideoLikeCount(videoId);
   };
 
   /*

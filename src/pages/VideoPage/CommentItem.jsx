@@ -24,19 +24,14 @@ function CommentItem({
 }) {
   createdTime = new Date(createdTime).getTime() / 1000;
 
-  const access_token = cookie.getCookie('access_token');
-  const header = {
-    Authorization: 'Bearer' + access_token,
-  };
-
   const postCommentLikeCount = async () => {
     console.log('post');
-    await api.postCommentLikeCount(commentId, access_token, header);
+    await api.postCommentLikeCount(commentId);
   };
 
   const deleteCommentLikeCount = async () => {
     console.log('delete');
-    await api.deleteCommentLikeCount(commentId, access_token, header);
+    await api.deleteCommentLikeCount(commentId);
   };
 
   const [reCommentArea, setReCommentArea] = useState(false);
@@ -56,14 +51,14 @@ function CommentItem({
 
   const postReComment = async () => {
     console.log('post');
-    await api.postReComment(commentId, access_token, header);
+    await api.postReComment(commentId);
   };
 
   const [reCommentCount, setReCommentCount] = useState(0);
   const [isreComment, setIsreComment] = useState(false);
   const getReCommenCount = async () => {
     console.log('get');
-    const response = await api.getReComment(commentId, header);
+    const response = await api.getReComment(commentId);
     setReCommentCount(response.numberOfElements);
     if (response.numberOfElements > 0) {
       setIsreComment(true);
@@ -142,7 +137,7 @@ function CommentItem({
         )}
         {toggleReComment && (
           <div className="reCommentListWrapper">
-            <ReCommentList commentId={commentId} header={header} />
+            <ReCommentList commentId={commentId} />
           </div>
         )}
       </div>
