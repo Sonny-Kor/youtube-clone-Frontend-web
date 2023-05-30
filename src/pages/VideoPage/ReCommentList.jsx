@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useLocation } from 'react-router-dom'
 
 import * as api from '../../services/comment_api';
 
-import CommentItem from './CommentItem';
+import ReCommentItem from './ReCommentItem';
 
-import './CommentList.scss';
+import './ReCommentList.scss';
 
-function CommentList(props) {
-  const [commentList, setcommentList] = useState([]);
+function ReCommentList({commentId, header}) {
+  const [reCommentList, setReCommentList] = useState([]);
 
   const location = useLocation();
   const params =  new URLSearchParams(location.search);
   const videoId = params.get("id");
 
-  const fetchCommentList = async () => {
+  const fetchReCommentList = async () => {
     console.log('fetch');
-    const response = await api.getCommentList(videoId);
+    const response = await api.getReComment(commentId, header);
     console.log(response);
-    setcommentList(response.comments);
+    setReCommentList(response.comments);
   };
   useEffect(() => {
-    fetchCommentList();
+    fetchReCommentList();
   }, [videoId]);
 
   // 비디오 길이 추가
   return (
     <ul className="commentList">
-      {commentList.map((comments, index) => (
-        <CommentItem
+      {reCommentList.map((comments, index) => (
+        <ReCommentItem
           commentId={comments.commentId}
           contents={comments.contents}
           createdTime={comments.createdTime}
@@ -45,4 +44,4 @@ function CommentList(props) {
   );
 }
 
-export default CommentList;
+export default ReCommentList;

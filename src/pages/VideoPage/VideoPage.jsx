@@ -1,19 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 import Header from '../../common/Header/Header';
 import NowVideoItem from './NowVideoItem';
 import Comment from './Comment';
 import RVideoList from './RVideoList';
 
+import * as api from '../../services/videoPage_api';
+
 import './VideoPage.scss';
 
 function VideoPage() {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const videoId = params.get('id');
+
+  const [video, setVideo] = useState([]);
+  console.log(videoId);
+  const fetchNowVideo = async () => {
+    console.log('fetch');
+    const response = await api.getVideoList(videoId);
+    console.log(response);
+    setVideo(response);
+  };
+  useEffect(() => {
+    if (videoId) fetchNowVideo();
+  }, [videoId]);
+  
+
   return (
     <div className="VideoPage">
       <Header />
       <div className="videoBody">
         <div className="videoContent">
-          <NowVideoItem />
+          <NowVideoItem
+            videoId={video.videoId}
+            videoSec={video.Sec}
+            channelId={video.channelId}
+            channelName={video.channelName}
+            profileImg={video.channelProfileImg}
+            channelSubscriberCount={video.channelSubscriberCount}
+            title={video.title}
+            description={video.description}
+            createdTime={video.createdTime}
+            viewCount={video.viewCount}
+            likeCount={video.likeCount}
+            qualityList={video.qualityList}
+            like={video.like}
+          />
           <Comment />
         </div>
         <div className="rvideoListWrapper">
