@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 import Header from '../../common/Header/Header';
@@ -12,22 +11,20 @@ import * as api from '../../services/videoPage_api';
 import './VideoPage.scss';
 
 function VideoPage() {
+  const [video, setVideo] = useState([]);
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const videoId = params.get('id');
 
-  const [video, setVideo] = useState([]);
-  console.log(videoId);
-  const fetchNowVideo = async () => {
-    console.log('fetch');
-    const response = await api.getVideoList(videoId);
-    console.log(response);
-    setVideo(response);
-  };
   useEffect(() => {
-    if (videoId) fetchNowVideo();
+    const fetchNowVideo = async id => {
+      const response = await api.getVideo(id);
+      setVideo(response);
+    };
+    if (videoId) {
+      fetchNowVideo(videoId);
+    }
   }, [videoId]);
-  
 
   return (
     <div className="VideoPage">
