@@ -42,7 +42,7 @@ function LoginPage(props) {
   const requestApplyChannel = async form => {
     const res = await api.applyChannel(form);
     console.log(res);
-    if (res.status == 200) {
+    if (res.status >= 200 && res.status < 300) {
       setFailedReason('');
       await requestSelectChannel({
         key: res.data.id
@@ -81,6 +81,7 @@ function LoginPage(props) {
       )}
       {pageState.includes('channel_select') && (
         <ChannelSelect
+          channelList={channelList}
           onSubmit={requestSelectChannel}
           onApplyChannel={requestApplyChannel}
           failedReason={failedReason}
@@ -189,7 +190,7 @@ function ChannelSelect({
   });
   const [isOpenedApplyForm, setOpenedApplyForm] = useState(false);
 
-  const list = [
+  const list = /*[
     {
       name: '채널1',
       key: 1
@@ -202,16 +203,18 @@ function ChannelSelect({
       name: '채널3',
       key: 3
     }
-  ].map(item => (
-    <TransparentButton
-      key={`channelItem_${item.key}`}
-      className="channelItem"
-      onClick={e => onSubmit({ key: item.key })}
-    >
-      <CircleImg className="profileImg"></CircleImg>
-      <span className="name">{item.name}</span>
-    </TransparentButton>
-  ));
+  ]*/ channelList.map(
+    item => (
+      <TransparentButton
+        key={`channelItem_${item.key}`}
+        className="channelItem"
+        onClick={e => onSubmit({ key: item.key })}
+      >
+        <CircleImg className="profileImg"></CircleImg>
+        <span className="name">{item.name}</span>
+      </TransparentButton>
+    )
+  );
 
   return (
     <div className={cx('ChannelSelect', 'pageForm', { failed: isFailed })}>
