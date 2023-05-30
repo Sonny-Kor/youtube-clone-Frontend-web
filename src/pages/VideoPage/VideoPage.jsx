@@ -46,7 +46,7 @@ function VideoPage() {
             qualityList={video.qualityList}
             like={video.like}
           />
-          <Comment />
+          <Comment videoId={video.videoId} />
         </div>
         <div className="rvideoListWrapper">
           <RVideoList />

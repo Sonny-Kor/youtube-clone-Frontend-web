@@ -7,7 +7,7 @@ import ReCommentItem from './ReCommentItem';
 
 import './ReCommentList.scss';
 
-function ReCommentList({commentId, header}) {
+function ReCommentList({commentId}) {
   const [reCommentList, setReCommentList] = useState([]);
 
   const location = useLocation();
@@ -16,7 +16,7 @@ function ReCommentList({commentId, header}) {
 
   const fetchReCommentList = async () => {
     console.log('fetch');
-    const response = await api.getReComment(commentId, header);
+    const response = await api.getReComment(commentId);
     console.log(response);
     setReCommentList(response.comments);
   };

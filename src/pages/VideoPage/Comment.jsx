@@ -1,6 +1,6 @@
-import axios from 'axios';
-import {useLocation } from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+
+import SortIcon from '@mui/icons-material/Sort';
 
 import * as cookie from '../../common/cookie';
 import * as api from '../../services/comment_api';
@@ -8,31 +8,19 @@ import * as api from '../../services/comment_api';
 import CommentAdd from './CommentAdd';
 import CommentList from './CommentList';
 
-import SortIcon from '@mui/icons-material/Sort';
-
 import './Comment.scss';
 
-function Comment() {
-
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const videoId = params.get('id');
-
-  const access_token = cookie.getCookie('access_token');
-  const header = {
-    Authorization: 'Bearer' + access_token,
-  };
-  
+function Comment({ videoId }) {
   const [commentCount, setcommentCount] = useState(0);
-  const fetchComment = async () => {
-    console.log('fetch');
-    const response = await api.getCommentCount(videoId, header);
-    console.log(response);
-    setcommentCount(response);
-  };
   useEffect(() => {
-    fetchComment();
-  });
+    const fetchComment = async () => {
+      const response = await api.getCommentCount(videoId);
+      setcommentCount(response);
+    };
+    if (videoId) {
+      fetchComment();
+    }
+  }, [videoId]);
 
   return (
     <div className="Comment">
