@@ -1,13 +1,6 @@
 .Header {
-  #asideBar {
+  #asideBar1 {
     display: none;
-    &:checked + .hAsideBar {
-      left: 0;
-    }
-    &:checked + .backGround {
-      opacity: 1;
-      visibility: visible;
-    }
   }
   .head {
     background-color: white;
@@ -18,7 +11,7 @@
     align-items: center;
     padding: 0px 16px;
     gap: 10px;
-    z-index: 10;
+    z-index: 15;
     top: 0;
     position: fixed;
     width: 100%;
@@ -90,6 +83,7 @@
         padding: 12px 16px;
         gap: 10px;
 
+        text-decoration: none;
         border: 1px solid #cccccc;
         border-radius: 24px;
         &:hover {
@@ -103,114 +97,188 @@
         .login {
           height: 100%;
           width: max-content;
-
           font-family: 'Inter';
           font-style: normal;
           font-weight: 400;
           font-size: 16px;
           line-height: 19px;
-
           color: #0088ff;
         }
       }
-    }
-  }
-  .body {
-    background-color: white;
-    box-sizing: border-box;
-    display: flex;
-    z-index: 10;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    .hAsideBar {
-      position: fixed;
-      top: 0;
-      left: -300px;
-      width: 240px;
-      height: 100%;
-      transition: all 0.35s;
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      background-color: #ffffff;
-      .asideBarHead {
+      .rightBtns {
+        box-sizing: border-box;
+        cursor: pointer;
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 8px;
-        gap: 16px;
-        .frame1 {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          padding: 4px;
-          gap: 16px;
-          width: 44px;
-          height: 44px;
-          color: #ccc;
-          .menu {
-            cursor: pointer;
-            width: 36px;
-            height: 36px;
-            user-select: none;
-          }
-        }
-        .youTube {
-          text-decoration: none;
-          user-select: none;
-          width: max-content;
-          font-family: 'Noto Sans';
-          font-style: normal;
-          font-weight: 900;
-          font-size: 24px;
-          line-height: 24px;
-          color: black;
-        }
-      }
-      .asideGroup {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0px 16px;
-        width: 240px;
-        .asideItem {
-          width: 240px;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          padding: 12px 16px;
-          gap: 24px;
-          box-sizing: border-box;
-          border: none;
+        padding: 12px 16px;
+        gap: 40px;
+        .videoCreateBtn {
           background-color: #ffffff;
+          display: flex;
+          width: 35px;
+          height: 35px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
           &:hover {
-            cursor: pointer;
-            background: red;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 16px;
-          }
-          .asideText {
-            width: max-content;
-            font-family: 'Noto Sans';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 16px;
-            color: #333333;
+            background: #d9d9d9;
           }
         }
-      }
-      .underLine {
-        width: 240px;
-        height: 1px;
-        background: #cccccc;
+        .myProfileBtnWrapper {
+          display: flex;
+          flex-direction: row;
+          position: relative;
+          .myProfileBtn {
+            background-color: rgb(112, 38, 156);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+          }
+          .myProfileWrapper {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 180px;
+            top: 0px;
+            right: 35px;
+            border: 1px solid #ffffff;
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            background: #ffffff;
+            justify-content: center;
+
+            padding: 5px 0px;
+            .studioBtn {
+              display: flex;
+              padding: 5px;
+              flex-direction: row;
+              gap: 10px;
+              border: none;
+              background: #ffffff;
+              border-radius: 16px;
+              cursor: pointer;
+              align-items: center;
+              text-decoration: none;
+              color: var(--primary-text-color);
+              &:hover {
+                background: #f0f0f0;
+              }
+            }
+            .logoutBtn {
+              display: flex;
+              padding: 5px;
+              flex-direction: row;
+              gap: 10px;
+              border: none;
+              background: #ffffff;
+              cursor: pointer;
+              border-radius: 16px;
+              align-items: center;
+              text-decoration: none;
+              &:hover {
+                background: #f0f0f0;
+              }
+            }
+          }
+        }
       }
     }
   }
+
+  .hAsideBar {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 240px;
+    height: 100%;
+    transition: all 0.35s;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    .asideBarHead {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 8px;
+      gap: 16px;
+      .frame1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 4px;
+        gap: 16px;
+        width: 44px;
+        height: 44px;
+        color: #ccc;
+        .menu {
+          cursor: pointer;
+          width: 36px;
+          height: 36px;
+          user-select: none;
+        }
+      }
+      .youTube {
+        text-decoration: none;
+        user-select: none;
+        width: max-content;
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 24px;
+        color: black;
+      }
+    }
+    .asideGroup {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0px 16px;
+      width: 240px;
+      .asideItem {
+        width: 240px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 24px;
+        box-sizing: border-box;
+        border: none;
+        background-color: #ffffff;
+        &:hover {
+          cursor: pointer;
+          background: red;
+          background: rgba(0, 0, 0, 0.1);
+          border-radius: 16px;
+        }
+        .asideText {
+          width: max-content;
+          font-family: 'Noto Sans';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 16px;
+          color: #333333;
+        }
+      }
+    }
+    .underLine {
+      width: 240px;
+      height: 1px;
+      background: #cccccc;
+    }
+  }
+
   .backGround {
     position: fixed;
     top: 0;
@@ -223,4 +291,26 @@
     visibility: hidden;
     z-index: 15;
   }
+
+  #asideBar1:checked + .hAsideBar {
+    left: 0px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    transition: all 0.35s;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+  }
+}
+
+#frame11 {
+  width: 123px;
+  height: 88px;
+  cursor: pointer;
 }
