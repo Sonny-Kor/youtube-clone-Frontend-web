@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { formatCountNumber, formatTime } from '../../common/functions';
 
@@ -8,13 +8,15 @@ import RVideoItemMore from './RVideoItemMore';
 import './RVideoItem.scss';
 
 function RVideoItem({
+  key,
   title,
   videoId,
-  thumbnail,
   channelTitle,
   viewCount,
   createdTime,
 }) {
+  createdTime = new Date(createdTime).getTime() / 1000;
+
   const onClickHandler = (e) => {
     console.log(e);
     if (e.target.className === 'btnMore') {
@@ -23,20 +25,18 @@ function RVideoItem({
     }
   };
 
-  const [isDragVideo, setDragVideo] = useState(false);
-  const toggleDragVideo = (e) => {
-    setDragVideo((isDrag) => !isDrag);
-  };
-
   return (
     <div className="RVideoItem">
-      <a
+      <Link
         className="cVideoItem"
         onClick={onClickHandler}
-        href={'https://youtu.be/' + videoId}
+        to={`/watch/?id=${videoId}`}
+        key={key}
+        state={{ videoId }}
       >
         <div className="thumbnailWrapper">
-          <img className="thumbnail" src={thumbnail} alt="thumbnail"></img>
+          <img className="thumbnail" src={`http://118.34.185.100:54114//media/vods/${videoId}/thumbnail.jpg`} 
+          alt="thumbnail"></img>
         </div>
         <div className="InfoWrapper">
           <div className="TitleWrapper">
@@ -55,7 +55,7 @@ function RVideoItem({
             </div>
           </div>
         </div>
-      </a>
+      </Link>
       <div className="MoreArea">
         <RVideoItemMore />
       </div>

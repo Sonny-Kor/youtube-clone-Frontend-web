@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { formatCountNumber, formatTime } from '../../common/functions';
 
@@ -23,13 +23,14 @@ function SVideoItem({
     }
   };
   return (
-    <a
+    <Link
       className="SVideoItem"
       onClick={onClickHandler}
-      href={'https://youtu.be/' + videoId}
+      to={`/watch/?id=${videoId}`}
     >
       <div className="thumbnailWrapper">
-        <img className="thumbnail" src={thumbnail} alt="thumbnail"></img>
+        <img className="thumbnail" src={`http://118.34.185.100:54114//media/vods/${videoId}/thumbnail.jpg`} 
+        alt="thumbnail"></img>
       </div>
       <div className="InfoWrapper">
         <div className="TitleWrapper">
@@ -58,7 +59,7 @@ function SVideoItem({
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 export default SVideoItem;

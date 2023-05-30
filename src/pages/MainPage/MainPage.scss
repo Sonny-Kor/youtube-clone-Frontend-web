@@ -6,6 +6,9 @@
     justify-content: center;
     margin-left: 288px;
     margin-top: 88px;
+    @media (max-width: 1300px) {
+      margin-left: 200px;
+    }
 
     .videoListWrapper {
       flex-grow: 1;

@@ -5,8 +5,8 @@
   flex-direction: column;
   align-items: center;
   padding: 8px 8px 16px;
-  gap: 16px;
-  width: 440px;
+  gap: 10px;
+  width: 360px;
   transition: box-shadow ease 0.15s;
   text-decoration: none;
   color: black;
@@ -54,6 +54,7 @@
       flex-direction: row;
       align-items: flex-start;
       padding: 0px;
+      justify-content: space-between;
       align-self: stretch;
       flex: 1;
       .InnerTitle {
@@ -61,13 +62,13 @@
         flex-direction: column;
         align-items: flex-start;
         padding: 0px;
-        gap: 8px;
+        gap: 5px;
         flex: 1;
         .VideoTitle {
           color: var(--primary-text-color);
           font-weight: 500;
-          font-size: 20px;
-          line-height: 28px;
+          font-size: 15px;
+          line-height: 22px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
@@ -78,7 +79,7 @@
         .ChannelName {
           color: var(--secondary-text-color);
           font-weight: 500;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 16px;
         }
         .DescriptionWrapper {
@@ -90,19 +91,19 @@
           .ViewCounter {
             color: var(--secondary-text-color);
             font-weight: 500;
-            font-size: 16px;
+            font-size: 14px;
             line-height: 16px;
           }
           .dot {
             color: var(--secondary-text-color);
             font-weight: 500;
-            font-size: 16px;
+            font-size: 14px;
             line-height: 16px;
           }
           .UploadedTime {
             color: var(--secondary-text-color);
             font-weight: 500;
-            font-size: 16px;
+            font-size: 14px;
             line-height: 16px;
           }
         }

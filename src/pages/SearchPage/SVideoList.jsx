@@ -7,21 +7,30 @@ import SVideoItem from './SVideoItem';
 import './SVideoList.scss';
 
 function SVideoList(props) {
-  let videoList = api.getVideoList();
+  const [videoList, setVideoList] = useState([]);
+
+  const fetchVideoList = async () => {
+    console.log('fetch');
+    const response = await api.getVideoList();
+    console.log(response);
+    setVideoList(response.videos);
+  };
+  useEffect(() => {
+    fetchVideoList();
+  }, []);
 
   return (
     <ul className="SVideoList">
       {videoList.map((video, index) => (
         <SVideoItem
-          key={video.video_id}
+          key={video.id}
           title={video.title}
-          thumbnail={video.thumb_img}
-          channelId={video.channelId}
-          channelTitle={video.channel_title}
-          videoId={video.video_id}
-          profileImg={video.profile_img}
-          viewCount={video.view_count}
-          createdTime={video.created_time}
+          channelId={video.id}
+          channelTitle={video.channelName}
+          videoId={video.id}
+          profileImg={video.channelImg}
+          viewCount={video.viewCount}
+          createdTime={video.createdTime}
         />
       ))}
     </ul>
