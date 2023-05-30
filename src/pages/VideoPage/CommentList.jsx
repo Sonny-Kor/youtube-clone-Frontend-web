@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom'
 
 import * as api from '../../services/comment_api';
 
@@ -8,12 +6,9 @@ import CommentItem from './CommentItem';
 
 import './CommentList.scss';
 
-function CommentList(props) {
+function CommentList({ videoId, updateCounter }) {
+  console.log(updateCounter);
   const [commentList, setcommentList] = useState([]);
-
-  const location = useLocation();
-  const params =  new URLSearchParams(location.search);
-  const videoId = params.get("id");
 
   const fetchCommentList = async () => {
     console.log('fetch');
@@ -22,14 +17,17 @@ function CommentList(props) {
     setcommentList(response.comments);
   };
   useEffect(() => {
-    fetchCommentList();
-  }, [videoId]);
+    if (videoId) {
+      fetchCommentList();
+    }
+  }, [videoId, updateCounter]);
 
   // 비디오 길이 추가
   return (
     <ul className="commentList">
       {commentList.map((comments, index) => (
         <CommentItem
+          videoId={videoId}
           commentId={comments.commentId}
           contents={comments.contents}
           createdTime={comments.createdTime}

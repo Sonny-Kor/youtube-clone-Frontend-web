@@ -26,7 +26,7 @@ function VideoItem({
     <Link
       className="VideoItem"
       onClick={onClickHandler}
-      to = {`/watch/?id=${videoId}`}
+      to = {`/watch/${videoId}`}
     >
       <div className="thumbnailWrapper">
         <img className="thumbnail" src={`http://118.34.185.100:54114//media/vods/${videoId}/thumbnail.jpg`}

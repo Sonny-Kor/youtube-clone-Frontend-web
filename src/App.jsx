@@ -18,9 +18,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Main />} />
       <Route exact path="/login" element={<LoginPage />} />
-      <Route path="/watch" element={<VideoPage />}>
-        <Route path=":videoid" element={<VideoPage />} />
-      </Route>
+      <Route path="/watch/:videoId" element={<VideoPage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route exact path="/Studio" element={<Studio />} />
     </Routes>
