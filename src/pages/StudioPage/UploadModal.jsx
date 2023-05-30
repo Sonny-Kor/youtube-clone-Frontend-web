@@ -6,7 +6,7 @@ import UploadIcon from '@mui/icons-material/Upload';
 import './UploadModal.scss';
 import Button from '../../common/Button/Button';
 import axios from 'axios';
-import * as api from '../../services/api.js';
+import * as api from '../../services/studioPage_api';
 
 const UploadModal = () => {
   const [isLoading, setIsLoading] = useState(false);

@@ -7,6 +7,8 @@ import StudioVideoList from './StudioVideoList';
 import './StudioVideoTable.scss';
 import UploadModal from './UploadModal'
 import DeleteModal from'./DeleteModal'
+import DeleteChannelModal from'./DeleteChannelModal'
+
 function StudioVideoTable(props) {
   const [currentCheck, setcurrentCheck] = useState([]);
   const onHandleSelection = (videoList) =>{
@@ -27,6 +29,7 @@ function StudioVideoTable(props) {
           <div className='videoTool'>
             <UploadModal/>
             <DeleteModal video_id={currentCheck} />
+            <DeleteChannelModal/>
           </div>
         </div>
       </div>
