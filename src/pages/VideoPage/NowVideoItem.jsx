@@ -1,19 +1,18 @@
-import { formatCountNumber, formatTime } from '../../common/functions';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
-import * as cookie from '../../common/cookie';
-import * as api from '../../services/comment_api';
 
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+
+import { formatCountNumber, formatTime } from '../../common/functions';
+import VideoContentPlayer from '../../common/VideoContentPlayer/VideoContentPlayer';
+import * as cookie from '../../common/cookie';
+import * as api from '../../services/comment_api';
 
 import NowVideoItemMore from './NowVideoItemMore';
 import './NowVideoItem.scss';
 
 function NowVideoItem({
   videoId,
-  videoSec,
   channelId,
   channelName,
   profileImg,
@@ -72,26 +71,8 @@ function NowVideoItem({
 */
   return (
     <div className="NowVideoItem">
-      <div className="nowThumbnailWrapper">
-        <img
-          className="NowThumbnail"
-          src={`http://118.34.185.100:54114//media/vods/${videoId}/thumbnail.jpg`}
-          alt="thumbnail"
-        ></img>
-        <div classaName="playBtnWrapper">
-          <div className="playBar"></div>
-          <div className="plyaOptionWrapper">
-            <div className="lOption">
-              <div className="playBtn"></div>
-              <div className="nextBtn"></div>
-              <div className="soundBtn"></div>
-              <div className="timeDuration"></div>
-            </div>
-            <div className="rOpiton">
-              <div className="fullScreenBtn"></div>
-            </div>
-          </div>
-        </div>
+      <div className="playerWrapper">
+        <VideoContentPlayer className="player" mediaType="hls" mediaId={`http://118.34.185.100:54114/media/vods/${videoId}/master.m3u8`}/>
       </div>
       <div className="nowInfoWrapper">
         <div className="videoTitle">{title}</div>

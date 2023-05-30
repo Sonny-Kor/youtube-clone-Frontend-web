@@ -60,4 +60,23 @@ const formatComma = countNumber => {
   return countNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export { formatCountNumber, formatTime, formatComma };
+/**
+ * @description targetElement로 전체화면을 띄웁니다.
+ * 
+ * @param {HTMLElement} targetElement 
+ */
+const enableFullscreen = targetElement => {
+  if (!document.fullscreenElement) {
+    targetElement?.requestFullscreen();
+  }
+}
+/**
+ * @description 전체화면을 해제합니다.
+ */
+const disableFullscreen = () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
+}
+
+export { formatCountNumber, formatTime, formatComma, enableFullscreen, disableFullscreen };
