@@ -30,7 +30,7 @@ function RVideoItem({
       <Link
         className="cVideoItem"
         onClick={onClickHandler}
-        to={`/watch/?id=${videoId}`}
+        to={`/watch/${videoId}`}
         key={key}
         state={{ videoId }}
       >

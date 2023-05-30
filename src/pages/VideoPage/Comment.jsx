@@ -11,12 +11,13 @@ import CommentList from './CommentList';
 import './Comment.scss';
 
 function Comment({ videoId }) {
+  const [updateCounter, setUpdateCounter] = useState(0);
   const [commentCount, setcommentCount] = useState(0);
+  const fetchComment = async () => {
+    const response = await api.getCommentCount(videoId);
+    setcommentCount(response);
+  };
   useEffect(() => {
-    const fetchComment = async () => {
-      const response = await api.getCommentCount(videoId);
-      setcommentCount(response);
-    };
     if (videoId) {
       fetchComment();
     }
@@ -34,10 +35,16 @@ function Comment({ videoId }) {
         </div>
       </div>
       <div className="commentAdd">
-        <CommentAdd />
+        <CommentAdd
+          videoId={videoId}
+          onSubmit={() => {
+            fetchComment();
+            setUpdateCounter(val => ++val);
+          }}
+        />
       </div>
       <div className="commentList">
-        <CommentList />
+        <CommentList videoId={videoId} updateCounter={updateCounter} />
       </div>
     </div>
   );

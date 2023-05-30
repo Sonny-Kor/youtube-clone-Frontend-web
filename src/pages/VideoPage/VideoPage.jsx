@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Header from '../../common/Header/Header';
 import NowVideoItem from './NowVideoItem';
@@ -12,11 +12,11 @@ import './VideoPage.scss';
 
 function VideoPage() {
   const [video, setVideo] = useState([]);
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const videoId = params.get('id');
+
+  const { videoId } = useParams();
 
   useEffect(() => {
+    console.log('asdfasdfasdf', videoId)
     const fetchNowVideo = async id => {
       const response = await api.getVideo(id);
       setVideo(response);

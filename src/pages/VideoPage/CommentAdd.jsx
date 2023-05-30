@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import {useLocation} from 'react-router-dom';
 
 import * as cookie from '../../common/cookie';
 import * as api from '../../services/comment_api';
@@ -9,32 +7,27 @@ import useInputs from '../../hooks/useInputs';
 
 import './CommentAdd.scss';
 
-function CommentAdd() {
+function CommentAdd({ videoId, onSubmit = () => {} }) {
   const [isWriteInput, setisWriteInput] = useState(false); //isWriteInput : focus 공간 할당여부
-  const toggleTrueWriteArea = (e) => {
-    setisWriteInput((isWrite) => true);
+  const toggleTrueWriteArea = e => {
+    setisWriteInput(isWrite => true);
   };
-
-  
-  const [commentKeyWord, setcommentKeyWord] = useState(''); //commentKeyWord : 댓글 내용
-  const toggleWriteArea = (e) => {
-    setisWriteInput((isWrite) => !isWrite);
-    setcommentKeyWord('');
+  const [form, onChange, reset] = useInputs({
+    commentKeyWord: '',
+  }); //commentKeyWord : 댓글 내용
+  const toggleWriteArea = e => {
+    setisWriteInput(isWrite => !isWrite);
     e.target.value = null;
   };
-  const onChangeHandler = (e) => {
-    setcommentKeyWord(e.target.value);
-  };
-
-  const location = useLocation();
-  const params =  new URLSearchParams(location.search);
-  const videoId = params.get("id");
 
   const postComment = async () => {
     console.log('post');
-    await api.postCommentList(videoId, commentKeyWord);
+    const res = await api.postCommentList(videoId, form.commentKeyWord);
+    if (res.status < 300) {
+      onSubmit();
+      reset();
+    }
   };
-  
 
   return (
     <div className="CommentAdd">
@@ -43,10 +36,11 @@ function CommentAdd() {
         <input
           className="commentInput"
           type="text"
+          name="commentKeyWord"
           placeholder="댓글 추가..."
           onClick={toggleTrueWriteArea}
-          onChange={onChangeHandler}
-          value={commentKeyWord}
+          onChange={onChange}
+          value={form.commentKeyWord}
         ></input>
 
         {isWriteInput && (
