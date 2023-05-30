@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import * as cookie from '../../common/cookie';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -8,40 +11,49 @@ import VideoLibraryOutlinedIcon from '@mui/icons-material/VideoLibraryOutlined';
 import './AsideBar.scss';
 
 function AsideBar() {
+  const access_token = cookie.getCookie('access_token');
   return (
     <div className="AsideBar expand">
       <div className="asideGroup min">
-        <button className="asideItem">
-          <div className="asideItemIcon"><HomeOutlinedIcon /></div>
+        <Link className="asideItem" to="/">
+          <div className="asideItemIcon">
+            <HomeOutlinedIcon />
+          </div>
           <div className="asideText">홈</div>
-        </button>
+        </Link>
         <button className="asideItem">
-          <div className="asideItemIcon"><SubscriptionsOutlinedIcon/></div>
+          <div className="asideItemIcon">
+            <SubscriptionsOutlinedIcon />
+          </div>
           <div className="asideText">구독</div>
         </button>
       </div>
       <div className="underLine"></div>
       <div className="asideGroup min">
         <button className="asideItem">
-          <div className="asideItemIcon"><VideoLibraryOutlinedIcon /></div>
+          <div className="asideItemIcon">
+            <VideoLibraryOutlinedIcon />
+          </div>
           <div className="asideText">보관함</div>
         </button>
       </div>
       <div className="underLine"></div>
-      <div className="asideGroup">
-        <div className="loginAlert">
-          <div className="loginText">
-            로그인하면 동영상에 좋아요를 표시하고 댓글을 달거나 구독할 수
-            있습니다.
-          </div>
-          <div className="loginButton">
-            <div className="accountCircle">
-              <AccountCircleIcon />
+      {!access_token && (
+        <div className="asideGroup">
+          <div className="loginAlert">
+            <div className="loginText">
+              로그인하면 동영상에 좋아요를 표시하고 댓글을 달거나 구독할 수
+              있습니다.
             </div>
-            <div className="login">로그인</div>
+            <div className="loginButton">
+              <div className="accountCircle">
+                <AccountCircleIcon />
+              </div>
+              <div className="login">로그인</div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
