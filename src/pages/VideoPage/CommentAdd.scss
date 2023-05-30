@@ -20,6 +20,7 @@
       border: none;
       border-bottom: 1px solid var(--secondary-text-color);
       &:focus {
+        border : none;
         border-bottom: 1px solid var(--primary-text-color);
       }
     }
@@ -27,25 +28,29 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
+      gap : 10px;
       .delete {
-        border: 1px solif #ffffff;
-        border-radius: 12px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        background-color: #ffffff;
+        padding : 5px;
+        width : 60px;
+        height : 30px;
+        cursor: pointer;
         &:hover {
           background-color: #d9d9d9;
         }
       }
       .insert {
-        border: 1px solif #d9d9d9;
-        border-radius: 12px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        background-color: #ffffff;
+        padding : 5px;
+        width : 60px;
+        height : 30px;
+        cursor: pointer;
         &:hover {
           background-color: #d9d9d9;
-        }
-        &.isWriteBtn {
-          color: #ffffff;
-          background-color: blue;
-          &:hover {
-            background-color: blue;
-          }
         }
       }
     }

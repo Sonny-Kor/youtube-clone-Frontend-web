@@ -1,37 +1,46 @@
-import './CommentAdd.scss';
-import cx from 'classnames';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import {useLocation} from 'react-router-dom';
+
+import * as cookie from '../../common/cookie';
+import * as api from '../../services/comment_api';
+
 import useInputs from '../../hooks/useInputs';
+
+import './CommentAdd.scss';
 
 function CommentAdd() {
   const [isWriteInput, setisWriteInput] = useState(false); //isWriteInput : focus 공간 할당여부
+  const toggleTrueWriteArea = (e) => {
+    setisWriteInput((isWrite) => true);
+  };
+
+  
+  const [commentKeyWord, setcommentKeyWord] = useState(''); //commentKeyWord : 댓글 내용
   const toggleWriteArea = (e) => {
     setisWriteInput((isWrite) => !isWrite);
+    setcommentKeyWord('');
+    e.target.value = null;
   };
-
-  let name = 'commentKeyword';
-  let value = '';
-  const [commentKeyWord, setcommentKeyWord] = useState(value); //commentKeyWord : 댓글 내용
-  const [form, onChange] = useInputs({
-    commentKeyword: '',
-  });
-  useEffect(() => {
-    const { commentKeyword } = form;
-
-    if (commentKeyword != '') {
-      setisWriteValue((isWriteValue) => !isWriteValue);
-    }
-  }, [form]);
   const onChangeHandler = (e) => {
     setcommentKeyWord(e.target.value);
-    onChange({
-      target: {
-        name,
-        value: commentKeyWord,
-      },
-    });
   };
-  const [isWriteValue, setisWriteValue] = useState(false); //버튼 파란색 활성화
+
+  const location = useLocation();
+  const params =  new URLSearchParams(location.search);
+  const videoId = params.get("id");
+
+  const access_token = cookie.getCookie('access_token');
+  const header = {
+    Authorization: 'Bearer' + access_token
+  };
+
+  const postComment = async () => {
+    console.log('post');
+    await api.postCommentList(videoId, commentKeyWord, access_token, header);
+  };
+  
+
   return (
     <div className="CommentAdd">
       <div className="profileCircle"></div>
@@ -40,9 +49,9 @@ function CommentAdd() {
           className="commentInput"
           type="text"
           placeholder="댓글 추가..."
-          onClick={toggleWriteArea}
+          onClick={toggleTrueWriteArea}
           onChange={onChangeHandler}
-          on
+          value={commentKeyWord}
         ></input>
 
         {isWriteInput && (
@@ -50,7 +59,7 @@ function CommentAdd() {
             <button className="delete" onClick={toggleWriteArea}>
               취소
             </button>
-            <button className={cx('insert', { isWriteBtn: isWriteValue })}>
+            <button className="insert" onClick={postComment}>
               댓글
             </button>
           </div>
