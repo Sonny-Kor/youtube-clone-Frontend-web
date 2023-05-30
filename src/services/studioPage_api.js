@@ -2,16 +2,17 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import * as cookie from '../common/cookie';
 
-const mychannelId = '103';
-const setCookie = cookie.setCookie(
-  'access_token',
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4'
-);
+const mychannelId = cookie.getCookie('current_channel');
+// const setCookie = cookie.setCookie(
+//   'access_token',
+//   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4'
+// );
 const access_token = cookie.getCookie('access_token');
+console.log (access_token)
 const api = axios.create({
   baseURL: 'http://118.34.185.100:54114',
   headers: {
-    Authorization: 'Bearer' + access_token,
+    Authorization: `Bearer ${access_token}`,
   },
 });
 
@@ -19,27 +20,12 @@ const getVideoInfo = async () => {
   return '';
 };
 const getChannelVideo = async () => {
-  const channelResponse = await axios({
-    method: 'GET',
-    url: `http://118.34.185.100:54114/channels/${mychannelId}/videos`,
-    mode: 'cors',
-    headers: {
-      Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4',
-    },
-  });
+  const channelResponse = await api.get(`http://118.34.185.100:54114/channels/${mychannelId}/videos`);
+
   const videoIds = channelResponse.data;
   const videos = [];
   for (const videoId of videoIds) {
-    const videoResponse = await axios({
-      method: 'GET',
-      url: `http://118.34.185.100:54114/videos/${videoId}`,
-      mode: 'cors',
-      headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4',
-      },
-    });
+    const videoResponse = await api.get(`http://118.34.185.100:54114/videos/${videoId}`);
 
     videos.push(videoResponse.data);
   }
@@ -86,8 +72,7 @@ const editChannelInfo = async (
       url: `http://118.34.185.100:54114/channels/${mychannelId}`,
       mode: 'cors',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4',
+        Authorization: `Bearer ${access_token}`,
         'Content-Type': 'multipart/form-data',
       },
       data: ChannelFormData,
@@ -105,8 +90,7 @@ const deleteVideo = async (videoId) => {
       url: `http://118.34.185.100:54114/videos/${videoId}`,
       mode: 'cors',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4',
+        'Authorization' : access_token
       },
     });
     console.log('영상제목/설명 업로드 성공:', videoResponse.data);
@@ -125,8 +109,7 @@ const EditVideo = async (videoId, videoTitle, videoDescription) => {
       url: `http://118.34.185.100:54114/videos/${videoId}`,
       mode: 'cors',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4',
+        Authorization: `Bearer ${access_token}`,
         'Content-Type': 'application/json',
       },
       data: { title: videoTitle, description: videoDescription },
@@ -148,8 +131,7 @@ const UploadVideo = async (video, thumb_img) => {
       url: `http://118.34.185.100:54114/videos`,
       mode: 'cors',
       headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBQ0NFU1NfVE9LRU4iLCJpYXQiOjE2ODUxOTAwNTEsImV4cCI6MTY4NjA1NDA1MSwiRU1BSUwiOiIyMDE5MDYxM0BrdW1vaC5hYy5rciIsIlJPTEUiOiJST0xFX1VTRVIiLCJNRU1CRVJfSUQiOiJOM3lNV1JNT3ZMa3JSWEVQSkQ1TTV3PT0iLCJDSEFOTkVMX0lEIjoiRm9TaXlhT1pVc1k0a1lWek5Lb1BQUT09In0.KxO_n5zOr2IdaBL578c6nv8KVhxacgN1bszpwxo9gU4',
+        Authorization: `Bearer ${access_token}`,
         'Content-Type': 'multipart/form-data',
       },
       data: videoFormData,
