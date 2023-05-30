@@ -1,0 +1,104 @@
+.LoginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
+  .pageForm {
+    border: solid 1px #f0f0f0;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px;
+
+    & > .title {
+      font-size: 28px;
+      font-weight: 500;
+    }
+
+    .channelList {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      
+      .channelItem {
+        justify-content: flex-start;
+        gap: 12px;
+        font-size: 18px;
+        padding: 12px 16px;
+        width: 100%;
+        min-width: 360px;
+
+        .profileImg {
+          background: #f0f0f0;
+          border: none;
+          width: 48px;
+        }
+      }
+    }
+    .openApplyForm {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1em;
+      padding: 16px 16px;
+      width: 100%;
+    }
+
+    .formWrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &.channelApply {
+        border: solid 2px #f0f0f0;
+        padding: 16px;
+
+        .title {
+          text-align: center;
+        }
+        .buttonArea .BasicButton {
+          width: 100%;
+        }
+      }
+      & > input.form {
+        border: solid 2px #f0f0f0;
+        border-radius: 4px;
+        font-size: 20px;
+        padding: 16px 16px;
+        width: 300px;
+        transition: border ease .15s;
+        &:focus {
+          border-color: #08f;
+          outline: none;
+        }
+      }
+    }
+
+    .failedMsg {
+      display: none;
+    }
+    &.failed .failedMsg {
+      color: rgb(255, 79, 79);
+      font-weight: 500;
+      display: block;
+    }
+
+    .buttonArea {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-self: stretch;
+      .BasicButton {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1em;
+        padding: 16px 16px;
+      }
+    }
+  }
+}

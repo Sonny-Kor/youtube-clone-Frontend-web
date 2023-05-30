@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Main from './pages/MainPage/MainPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 import VideoPage from './pages/VideoPage/VideoPage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import Studio from './pages/StudioPage/StudioPage';
@@ -16,6 +17,7 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Main />} />
+      <Route exact path="/login" element={<LoginPage />} />
       <Route path="/watch" element={<VideoPage />}>
         <Route path=":videoid" element={<VideoPage />} />
       </Route>
