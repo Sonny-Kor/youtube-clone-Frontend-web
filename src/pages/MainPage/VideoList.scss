@@ -6,12 +6,13 @@
   margin: 0;
   --row-count: 3;
   --row-width: 440px;
+  justify-content: center;
 
   width: calc(var(--row-count) * var(--row-width));
-  @media (max-width: 1700px) and (min-width: 1301px) {
+  @media (max-width: 800px) and (min-width: 901px) {
     --row-count: 2;
   }
-  @media (max-width: 1300px) {
+  @media (max-width: 900px) {
     --row-count: 1;
   }
 }

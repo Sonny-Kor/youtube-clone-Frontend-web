@@ -1,5 +1,4 @@
-// import { Link } from 'react-router-dom';
-
+import { Link} from 'react-router-dom';
 import { formatCountNumber, formatTime } from '../../common/functions';
 
 import VideoItemMore from './VideoItemMore';
@@ -7,15 +6,16 @@ import VideoItemMore from './VideoItemMore';
 import './VideoItem.scss';
 
 function VideoItem({
+  key,
   title,
   videoId,
-  thumbnail,
   profileImg,
   channelTitle,
   viewCount,
-  createdTime
+  createdTime,
 }) {
-  const onClickHandler = e => {
+  createdTime = new Date(createdTime).getTime() / 1000;
+  const onClickHandler = (e) => {
     console.log(e);
     if (e.target.className === 'btnMore') {
       console.log('버튼 클릭');
@@ -23,13 +23,14 @@ function VideoItem({
     }
   };
   return (
-    <a
+    <Link
       className="VideoItem"
       onClick={onClickHandler}
-      href={'https://youtu.be/' + videoId}
+      to = {`/watch/?id=${videoId}`}
     >
       <div className="thumbnailWrapper">
-        <img className="thumbnail" src={thumbnail} alt="thumbnail"></img>
+        <img className="thumbnail" src={`http://118.34.185.100:54114//media/vods/${videoId}/thumbnail.jpg`}
+         alt="thumbnail"></img>
       </div>
       <div className="InfoWrapper">
         <img className="ProfileCircle" src={profileImg} alt="profileImg"></img>
@@ -50,7 +51,7 @@ function VideoItem({
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 export default VideoItem;

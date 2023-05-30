@@ -8,31 +8,31 @@ import VideoItem from './VideoItem';
 import './VideoList.scss';
 
 function VideoList(props) {
-  let videoList = api.getVideoList();
+  const [videoList, setVideoList] = useState([]);
 
-  // const [videoList, setVideoList] = useState(null);
+  const fetchVideoList = async () => {
+    console.log('fetch');
+    const response = await api.getVideoList();
+    console.log(response);
+    setVideoList(response.videos);
+  };
+  useEffect(() => {
+    fetchVideoList();
+  }, []);
 
-  // const fetchVideoList = async () => {
-  //   const response = await axios.get("http://118.34.185.100:54114/videos/1/");
-  //   setVideoList(response.data);
-  // }
-  // useEffect(() => {
-  //   fetchVideoList();
-  // }, []);
-
+  // 비디오 길이 추가
   return (
     <ul className="VideoList">
       {videoList.map((video, index) => (
         <VideoItem
-          key={video.video_id}
+          key={video.id}
           title={video.title}
-          thumbnail={video.thumb_img}
-          channelId={video.channelId}
-          channelTitle={video.channel_title}
-          videoId={video.video_id}
-          profileImg={video.profile_img}
-          viewCount={video.view_count}
-          createdTime={video.created_time}
+          channelId={video.id}
+          channelTitle={video.channelName}
+          videoId={video.id}
+          profileImg={video.channelImg}
+          viewCount={video.viewCount}
+          createdTime={video.createdTime}
         />
       ))}
     </ul>
