@@ -12,6 +12,11 @@ const api = axios.create({
   }
 });
 
+const getChannelVideo = async() =>{
+  const response = await api.get('/channels/' + mychannelId + 'vidoes')
+  return response.data;
+}
+
 const deleteChannel = async () =>{
   const response = await api.delete(`/channels/` + mychannelId);
   return response.data;
