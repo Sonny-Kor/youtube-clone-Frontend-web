@@ -14,8 +14,8 @@ function StudioVideoList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.getStudioVideoList();
-        setvideoList(response);
+        //const response = await api.getStudioVideoList();
+        //setvideoList(response);
 
         const initCheck = [];
         // const initCheck = [response.map(video => ({
