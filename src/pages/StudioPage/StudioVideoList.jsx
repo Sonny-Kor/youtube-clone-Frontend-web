@@ -15,8 +15,8 @@ function StudioVideoList( {onHandleSelection}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.getStudioVideoList();
-        setvideoList(response);
+        //const response = await api.getStudioVideoList();
+        //setvideoList(response);
 
         const initCheck = [];
         setCurrentCheck(initCheck);
