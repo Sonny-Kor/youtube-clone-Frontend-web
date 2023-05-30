@@ -28,15 +28,18 @@ const getCommentCount = async videoId => {
   return commentCount.data['Video CountOfComments'];
 };
 
-const postCommentList = async (videoId, commentKeyWord) => {
-  const data = {
-    dtd_content: commentKeyWord
-  };
-  return await api.post(
-    `/comments?page=0&size=5&videoId=${videoId}`,
-    data,
-    getHeaders()
+const postCommentList = async (videoId, content) => {
+  const header = getHeaders();
+  header.headers['Content-Type'] = 'multipart/form-data';
+
+  const commentFormData = new FormData();
+  commentFormData.append(
+    'dto',
+    new Blob([JSON.stringify({ content })], {
+      type: 'application/json'
+    })
   );
+  return await api.post(`/comments/${videoId}`, commentFormData, header);
 };
 
 const postCommentLikeCount = async commentId => {
@@ -48,11 +51,19 @@ const deleteCommentLikeCount = async commentId => {
 };
 
 const postSubscribeCount = async channelId => {
-  return await api.post(`/channels/${channelId}/subscription`, getHeaders());
+  return await api.post(
+    `/channels/${channelId}/subscription`,
+    {},
+    getHeaders()
+  );
 };
 
 const deleteSubscribeCount = async channelId => {
-  return await api.delete(`/channels/${channelId}/subscription`, getHeaders());
+  return await api.delete(
+    `/channels/${channelId}/subscription`,
+    {},
+    getHeaders()
+  );
 };
 
 const postVideoLikeCount = async videoId => {
@@ -63,18 +74,36 @@ const deleteVideoLikeCount = async videoId => {
   return await api.delete(`/videos/${videoId}/like`, getHeaders());
 };
 
-const getSubscribeList = async (myChannelId, channelId) => {
-  const isSubscribe = await api.get(
-    `/${channelId}/subscribed/${myChannelId}`,
-    channelId,
-    getHeaders()
-  );
-  console.log(isSubscribe);
-  return isSubscribe.data;
+const getSubscribed = async channelId => {
+  const myChannelId = getCookie('current_channel');
+  if (!myChannelId) {
+    return { status: false };
+  }
+  try {
+    const response = await api.get(
+      `/${channelId}/subscribed/${myChannelId}`,
+      channelId,
+      getHeaders()
+    );
+    console.log(response);
+    return response.data;
+  } catch (e) {
+    return { status: false };
+  }
 };
 
-const postReComment = async commentId => {
-  return await api.post(`/comments/reply/${commentId}`, getHeaders());
+const postReComment = async (commentId, content) => {
+  const header = getHeaders();
+  header.headers['Content-Type'] = 'multipart/form-data';
+
+  const commentFormData = new FormData();
+  commentFormData.append(
+    'dto',
+    new Blob([JSON.stringify({ content })], {
+      type: 'application/json'
+    })
+  );
+  return await api.post(`/comments/reply/${commentId}`, commentFormData, header);
 };
 
 const getReComment = async (commentId, header) => {
@@ -96,7 +125,7 @@ export {
   deleteSubscribeCount,
   postVideoLikeCount,
   deleteVideoLikeCount,
-  getSubscribeList,
+  getSubscribed,
   postReComment,
   getReComment
 };

@@ -12,6 +12,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import './CommentItem.scss';
 
 function CommentItem({
+  videoId,
   commentId,
   contents,
   createdTime,
@@ -20,7 +21,7 @@ function CommentItem({
   like, //좋아요 상태
   channelId,
   channelName,
-  channelProfileImg,
+  channelProfileImg
 }) {
   createdTime = new Date(createdTime).getTime() / 1000;
 
@@ -35,23 +36,23 @@ function CommentItem({
   };
 
   const [reCommentArea, setReCommentArea] = useState(false);
-  const toggleTrueWriteArea = (e) => {
-    setReCommentArea((reComment) => true);
+  const toggleTrueWriteArea = e => {
+    setReCommentArea(reComment => true);
   };
-  const toggleWriteArea = (e) => {
-    setReCommentArea((reComment) => !reComment);
+  const toggleWriteArea = e => {
+    setReCommentArea(reComment => !reComment);
     setReCommentArea('');
     e.target.value = null;
   };
 
   const [reCommentKeyWord, setReCommentKeyWord] = useState(''); //commentKeyWord : 댓글 내용
-  const onChangeHandler = (e) => {
+  const onChangeHandler = e => {
     setReCommentKeyWord(e.target.value);
   };
 
   const postReComment = async () => {
     console.log('post');
-    await api.postReComment(commentId);
+    await api.postReComment(commentId, reCommentKeyWord);
   };
 
   const [reCommentCount, setReCommentCount] = useState(0);
@@ -72,7 +73,7 @@ function CommentItem({
 
   const [toggleReComment, setToggleReComment] = useState(false);
   const spreadReComment = () => {
-    setToggleReComment((toggle) => !toggle);
+    setToggleReComment(toggle => !toggle);
   };
   return (
     <div className="CommentItem">
@@ -95,7 +96,7 @@ function CommentItem({
             onclick={!like ? postCommentLikeCount : deleteCommentLikeCount}
           >
             <div className="icon">
-              {!like && (<ThumbUpOffAltIcon />)} {like && (<ThumbUpIcon />)}
+              {!like && <ThumbUpOffAltIcon />} {like && <ThumbUpIcon />}
             </div>
             <div className="likeCount">{formatCountNumber(likeCount)}</div>
           </button>
@@ -137,7 +138,7 @@ function CommentItem({
         )}
         {toggleReComment && (
           <div className="reCommentListWrapper">
-            <ReCommentList commentId={commentId} />
+            <ReCommentList videoId={videoId} commentId={commentId} />
           </div>
         )}
       </div>

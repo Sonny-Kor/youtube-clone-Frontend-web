@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom'
 
 import * as api from '../../services/comment_api';
 
@@ -7,12 +6,8 @@ import ReCommentItem from './ReCommentItem';
 
 import './ReCommentList.scss';
 
-function ReCommentList({commentId}) {
+function ReCommentList({ videoId, commentId }) {
   const [reCommentList, setReCommentList] = useState([]);
-
-  const location = useLocation();
-  const params =  new URLSearchParams(location.search);
-  const videoId = params.get("id");
 
   const fetchReCommentList = async () => {
     console.log('fetch');

@@ -10,6 +10,7 @@ import * as api from '../../services/comment_api';
 
 import NowVideoItemMore from './NowVideoItemMore';
 import './NowVideoItem.scss';
+import cx from 'classnames';
 
 function NowVideoItem({
   videoId,
@@ -23,7 +24,7 @@ function NowVideoItem({
   viewCount,
   likeCount,
   qualityList,
-  like,
+  like
 }) {
   createdTime = new Date(createdTime).getTime() / 1000;
   const postSubscribeCount = async () => {
@@ -46,29 +47,25 @@ function NowVideoItem({
     await api.deleteVideoLikeCount(videoId);
   };
 
-  /*
-  const myChannelId = atob(access_token).channelId;
-  const [isSubscribe, setIsSubscribe] = useState(false);
+  const [isSubscribed, setSubscribed] = useState(false);
   const fetchSubscribeList = async () => {
     console.log('fetch');
-    const response = await api.getSubscribeList(channelId, myChannelId, channelId, header);
+    const response = await api.getSubscribed(channelId);
     console.log(response);
-    setIsSubscribe(response.status);
+    setSubscribed(response.status);
   };
   useEffect(() => {
     fetchSubscribeList();
   });
 
-
-  onClick={
-    !isSubscribe ? postSubscribeCount : deleteSubscribeCount
-  }
-  {!isSubscribe && {<button className="subscribeBtn">구독</button>}} {isSubscribe && {<button className="subscribeBtn">구독중</button>}}}
-*/
   return (
     <div className="NowVideoItem">
       <div className="playerWrapper">
-        <VideoContentPlayer className="player" mediaType="hls" mediaId={`http://118.34.185.100:54114/media/vods/${videoId}/master.m3u8`}/>
+        <VideoContentPlayer
+          className="player"
+          mediaType="hls"
+          mediaId={`http://118.34.185.100:54114/media/vods/${videoId}/master.m3u8`}
+        />
       </div>
       <div className="nowInfoWrapper">
         <div className="videoTitle">{title}</div>
@@ -88,7 +85,14 @@ function NowVideoItem({
               </div>
             </div>
             <div className="btnWrapper">
-              <button className="subscribeBtn">구독</button>
+              <button
+                className={cx('subscribeBtn', { isSubscribed })}
+                onClick={
+                  !isSubscribed ? postSubscribeCount : deleteSubscribeCount
+                }
+              >
+                {!isSubscribed ? '구독' : '구독중'}
+              </button>
             </div>
           </div>
 
