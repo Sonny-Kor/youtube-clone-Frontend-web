@@ -98,6 +98,7 @@ const selectChannel = async ({ key }) => {
       if (response.headers['authorization']) {
         setCookie('access_token', response.headers['authorization']);
       }
+      setCookie('current_channel', key);
       return {
         status: 200
       };
@@ -118,14 +119,19 @@ const selectChannel = async ({ key }) => {
 };
 const applyChannel = async ({ title, description }) => {
   try {
-    console.log(getHeaders());
-    const response = await api.post(
-      '/channels',
-      { dto: { title, description } },
-      getHeaders()
+    const header = getHeaders();
+    header.headers['Content-Type'] = 'multipart/form-data';
+
+    const ChannelFormData = new FormData();
+    ChannelFormData.append(
+      'dto',
+      new Blob([JSON.stringify({ title, description })], {
+        type: 'application/json'
+      })
     );
+    const response = await api.post('/channels', ChannelFormData, header);
     console.log(response);
-    if (response.status == 200) {
+    if (response.status >= 200 && response.status < 300) {
       return {
         status: 200,
         data: response.data

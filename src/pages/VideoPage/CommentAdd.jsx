@@ -30,14 +30,9 @@ function CommentAdd() {
   const params =  new URLSearchParams(location.search);
   const videoId = params.get("id");
 
-  const access_token = cookie.getCookie('access_token');
-  const header = {
-    Authorization: 'Bearer' + access_token
-  };
-
   const postComment = async () => {
     console.log('post');
-    await api.postCommentList(videoId, commentKeyWord, access_token, header);
+    await api.postCommentList(videoId, commentKeyWord);
   };
   
 

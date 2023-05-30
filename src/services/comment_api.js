@@ -1,76 +1,102 @@
 import axios from 'axios';
+import { getCookie, setCookie } from '../common/cookie';
 
 const api = axios.create({
-  baseURL: 'http://118.34.185.100:54114',
+  baseURL: 'http://118.34.185.100:54114'
 });
 
-const getCommentList = async (videoId) => {
+const getHeaders = () => {
+  const authToken = getCookie('access_token');
+  return authToken
+    ? {
+        headers: { Authorization: authToken }
+      }
+    : {};
+};
+
+const getCommentList = async videoId => {
   const response = await api.get(`/comments?page=0&size=5&videoId=${videoId}`);
-  console.log(response)
-  return response.data
+  console.log(response);
+  return response.data;
 };
 
-const getCommentCount = async (videoId, header) => {
-  const commentCount = await api.get(`/comments/count/?videoId=${videoId}`, header);
-  return commentCount.data["Video CountOfComments"]
+const getCommentCount = async videoId => {
+  const commentCount = await api.get(
+    `/comments/count/?videoId=${videoId}`,
+    getHeaders()
+  );
+  return commentCount.data['Video CountOfComments'];
 };
 
-const postCommentList = async (videoId, commentKeyWord, access_token, header) => {
+const postCommentList = async (videoId, commentKeyWord) => {
   const data = {
-    dtd_content: commentKeyWord,
+    dtd_content: commentKeyWord
   };
-  if (access_token)
-    await api.post(`/comments?page=0&size=5&videoId=${videoId}`, data, header);
+  return await api.post(
+    `/comments?page=0&size=5&videoId=${videoId}`,
+    data,
+    getHeaders()
+  );
 };
 
-const postCommentLikeCount = async (commentId, access_token, header) => {
-  if (access_token)
-    await api.post(`/comments/${commentId}/like`, header);
+const postCommentLikeCount = async commentId => {
+  return await api.post(`/comments/${commentId}/like`, getHeaders());
 };
 
-const deleteCommentLikeCount = async (commentId, access_token, header) => {
-  if (access_token)
-    await api.delete(`/comments/${commentId}/like`, header);
+const deleteCommentLikeCount = async commentId => {
+  return await api.delete(`/comments/${commentId}/like`, getHeaders());
 };
 
-const postSubscribeCount = async (channelId, access_token, header) => {
-  if (access_token)
-    await api.post(`/channels/${channelId}/subscription`, header);
+const postSubscribeCount = async channelId => {
+  return await api.post(`/channels/${channelId}/subscription`, getHeaders());
 };
 
-const deleteSubscribeCount = async (channelId, access_token, header) => {
-  if (access_token)
-    await api.delete(`/channels/${channelId}/subscription`, header);
+const deleteSubscribeCount = async channelId => {
+  return await api.delete(`/channels/${channelId}/subscription`, getHeaders());
 };
 
-const postVideoLikeCount = async (videoId, access_token, header) => {
-  if (access_token)
-    await api.post(`/videos/${videoId}/like`, header);
+const postVideoLikeCount = async videoId => {
+  return await api.post(`/videos/${videoId}/like`, getHeaders());
 };
 
-const deleteVideoLikeCount = async (videoId, access_token, header) => {
-  if (access_token)
-    await api.delete(`/videos/${videoId}/like`, header);
+const deleteVideoLikeCount = async videoId => {
+  return await api.delete(`/videos/${videoId}/like`, getHeaders());
 };
 
-const getSubscribeList = async (myChannelId, channelId, header) => {
-  const isSubscribe = await api.get(`/${channelId}/subscribed/${myChannelId}`, channelId, header);
-  console.log(isSubscribe)
+const getSubscribeList = async (myChannelId, channelId) => {
+  const isSubscribe = await api.get(
+    `/${channelId}/subscribed/${myChannelId}`,
+    channelId,
+    getHeaders()
+  );
+  console.log(isSubscribe);
   return isSubscribe.data;
-}
+};
 
-const postReComment = async (commentId, access_token, header) => {
-  if (access_token)
-    await api.post(`/comments/reply/${commentId}`, header);
+const postReComment = async commentId => {
+  return await api.post(`/comments/reply/${commentId}`, getHeaders());
 };
 
 const getReComment = async (commentId, header) => {
-  const reComment = await api.get(`/comments/reply/?page=0&size=1&commentId=${commentId}`, header);
-  console.log(reComment)
+  const reComment = await api.get(
+    `/comments/reply/?page=0&size=1&commentId=${commentId}`,
+    getHeaders()
+  );
+  console.log(reComment);
   return reComment.data;
-}
+};
 
-
-export { getCommentList, getCommentCount, postCommentList, postCommentLikeCount, deleteCommentLikeCount,
-  postSubscribeCount, deleteSubscribeCount, postVideoLikeCount, deleteVideoLikeCount, getSubscribeList, postReComment, 
-  getReComment };
+export {
+  getCommentList,
+  getCommentCount,
+  postCommentList,
+  postCommentLikeCount,
+  deleteCommentLikeCount,
+  postSubscribeCount,
+  deleteSubscribeCount,
+  postVideoLikeCount,
+  deleteVideoLikeCount,
+  getSubscribeList,
+  postReComment,
+  getReComment
+};
